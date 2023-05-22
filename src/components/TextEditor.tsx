@@ -2,7 +2,7 @@ import { useState, useEffect, useRef,  } from "react"
 export const TextEditor=()=>{
   const textAreaRef= useRef<HTMLTextAreaElement>(null)
   const [textValue, setTextValue]= useState('')
-  const cursor= textAreaRef.current?.selectionStart
+  
   useEffect(()=>{
     setTextValue('')
     // textAreaRef.current=textValue
@@ -10,8 +10,12 @@ export const TextEditor=()=>{
   console.log(textAreaRef)
 
   const handleLink=():void=>{
-    const words= textValue?.split(/\s+/)
-    const newTextValue=words?.slice(0, cursor).concat(`[]() ${words.slice(cursor, words.length)}` ).join(' ')
+    const cursor= textAreaRef.current?.selectionStart
+    const words= textValue
+    // ?.split(/\s+/)
+    console.log(cursor)
+    const newTextValue=words?.slice(0, cursor).concat(`[]() ${words.slice(cursor, words.length)}` )
+    // .join(' ')
     setTextValue(newTextValue)
   }
   return(
