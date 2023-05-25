@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef,  } from "react"
-import React from 'react'
 export const TextEditor=()=>{
   const textAreaRef= useRef<HTMLTextAreaElement>(null)
   const [textValue, setTextValue]= useState('')
@@ -7,42 +6,38 @@ export const TextEditor=()=>{
   useEffect(()=>{
     setTextValue('')
   },[])
- // console.log(textAreaRef)
 
-  const handleLink=():void=>{
+  const handleCharacter=(xter:string):void=>{
     const cursor= textAreaRef.current?.selectionStart
     const words= textValue
-    console.log(cursor)
-    const newTextValue=words?.slice(0, cursor).concat(`[]() ${words.slice(cursor, words.length)}` )
+    const newTextValue=words?.slice(0, cursor).concat(`${xter} ${words.slice(cursor, words.length)}` )
     setTextValue(newTextValue)
   }
-  const handlePrev=():void=>{
-    function replaceStringWithComponent(string:string, component:string | React.FunctionComponent<{ children: string; }> | React.ComponentClass<{ children: string; }>) {
-      return React.createElement(component, {
-        children: string,
-      });
-    }
-    interface MCProps{
-      text:string
-    }
-    function MyComp(props:MCProps){
-      return <a>{props.text}</a>
-    }
-    //
-    // const newwrd=replaceStringWithComponent(textValue, <MyComp text={te}/>)
-    //const words=textValue.replace(reg, replaceStringWithComponent)
-    // setComp(newwrd)
-  }
   const Preview=(props:{inputStr:string})=>{
-    const reg= new RegExp(/\[(.*?)\]/g)
+    const regBold= new RegExp(/\[(.*?)\]/g)
+    const regLink= /%(.*?)%/g
+    const regItalic =/~(.*?)~/g
     const words= props.inputStr.split(' ')
     return (
       <div className="prev">
       {
-        words.map(wrd=>{
-          if(wrd.match(reg)){
-            return <strong>{wrd}</strong>
-          }else return wrd+ ' '
+        words.map((wrd, idx)=>{
+          if(wrd.match(regBold)){
+            return <strong>{wrd.slice(1,wrd.length-1)}</strong>
+          }else if(wrd.match(regLink)){
+            return (
+            <a href={wrd.slice(1,wrd.length-1)}>
+              {words[idx-1]}
+              </a>
+              )
+          }else if(wrd.match(regItalic)){
+            return (
+            <em>
+              {wrd.slice(1,wrd.length-1)}
+              </em>
+              )
+          }
+          else return wrd+ ' '
         })
       }
 
@@ -64,10 +59,10 @@ export const TextEditor=()=>{
       </textarea>
     </div>
     <div className="btn-container">
-      <button onClick={handleLink}>link</button>
-      <button>italic</button>
-      <button>bold</button>
-      <button onClick={handlePrev}>preview</button>
+      <button onClick={()=>handleCharacter('%%')}>link</button>
+      <button onClick={()=>handleCharacter('~~')}>italic</button>
+      <button onClick={()=>handleCharacter('[]')}>bold</button>
+      <button>preview</button>
     </div>
     <Preview inputStr={textValue}/>
   </>
