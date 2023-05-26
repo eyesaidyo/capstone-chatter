@@ -2,7 +2,7 @@ import { useState, useEffect, useRef,  } from "react"
 export const TextEditor=()=>{
   const textAreaRef= useRef<HTMLTextAreaElement>(null)
   const [textValue, setTextValue]= useState('')
-  const [comp , setComp] = useState(<div></div>)
+  // const [comp , setComp] = useState(<div></div>)
   useEffect(()=>{
     setTextValue('')
   },[])
@@ -17,6 +17,7 @@ export const TextEditor=()=>{
     const regBold= new RegExp(/\[(.*?)\]/g)
     const regLink= /%(.*?)%/g
     const regItalic =/~(.*?)~/g
+    const regParagraph =/{(.*?)}/g
     const words= props.inputStr.split(' ')
     return (
       <div className="prev">
@@ -35,6 +36,13 @@ export const TextEditor=()=>{
             <em>
               {wrd.slice(1,wrd.length-1)}
               </em>
+              )
+          }
+          else if(wrd.match(regParagraph)){
+            return (
+            <p>
+              {wrd.slice(1,wrd.length-1)}
+              </p>
               )
           }
           else return wrd+ ' '
@@ -62,6 +70,7 @@ export const TextEditor=()=>{
       <button onClick={()=>handleCharacter('%%')}>link</button>
       <button onClick={()=>handleCharacter('~~')}>italic</button>
       <button onClick={()=>handleCharacter('[]')}>bold</button>
+      <button onClick={()=>handleCharacter('{}')}>paragraph</button>
       <button>preview</button>
     </div>
     <Preview inputStr={textValue}/>
