@@ -1,11 +1,28 @@
-import { useState, useEffect, useRef,  } from "react"
+import { useState, useEffect, useRef,  useContext,  } from "react"
+import {Link}  from 'react-router-dom'
+import { createContext } from "react"
+interface Text{children:React.ReactNode}
+interface TextCon{
+            textValue:string, 
+          setTextValue:React.Dispatch<React.SetStateAction<string>>
+}
+const def:TextCon={
+  textValue:'',
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  setTextValue:()=>{}
+}
+export const TextContext =createContext(def)
+export const TextProvider=(props:Text)=>{
+  const [textValue, setTextValue]= useState('') 
+  const value= {textValue, setTextValue}
+  return <TextContext.Provider value={value}>{props.children}</TextContext.Provider>
+}
 export const TextEditor=()=>{
   const textAreaRef= useRef<HTMLTextAreaElement>(null)
-  const [textValue, setTextValue]= useState('')
-  // const [comp , setComp] = useState(<div></div>)
+  const {textValue, setTextValue}= useContext(TextContext)
   useEffect(()=>{
     setTextValue('')
-  },[])
+  },[setTextValue])
 
   const handleCharacter=(xter:string):void=>{
     const cursor= textAreaRef.current?.selectionStart
@@ -13,45 +30,7 @@ export const TextEditor=()=>{
     const newTextValue=words?.slice(0, cursor).concat(`${xter} ${words.slice(cursor, words.length)}` )
     setTextValue(newTextValue)
   }
-  const Preview=(props:{inputStr:string})=>{
-    const regBold= new RegExp(/\[(.*?)\]/g)
-    const regLink= /%(.*?)%/g
-    const regItalic =/~(.*?)~/g
-    const regParagraph =/{(.*?)}/g
-    const words= props.inputStr.split(' ')
-    return (
-      <div className="prev">
-      {
-        words.map((wrd, idx)=>{
-          if(wrd.match(regBold)){
-            return <strong>{wrd.slice(1,wrd.length-1)}</strong>
-          }else if(wrd.match(regLink)){
-            return (
-            <a href={wrd.slice(1,wrd.length-1)}>
-              {words[idx-1]}
-              </a>
-              )
-          }else if(wrd.match(regItalic)){
-            return (
-            <em>
-              {wrd.slice(1,wrd.length-1)}
-              </em>
-              )
-          }
-          else if(wrd.match(regParagraph)){
-            return (
-            <p>
-              {wrd.slice(1,wrd.length-1)}
-              </p>
-              )
-          }
-          else return wrd+ ' '
-        })
-      }
-
-    </div>
-    )
-  }
+ 
   return(
     <>
     <div>
@@ -71,9 +50,9 @@ export const TextEditor=()=>{
       <button onClick={()=>handleCharacter('~~')}>italic</button>
       <button onClick={()=>handleCharacter('[]')}>bold</button>
       <button onClick={()=>handleCharacter('{}')}>paragraph</button>
-      <button>preview</button>
+      <Link to={'prev'} >preview</Link>
     </div>
-    <Preview inputStr={textValue}/>
+    
   </>
   )
 }
