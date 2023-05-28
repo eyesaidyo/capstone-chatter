@@ -6,6 +6,7 @@ export const Preview=()=>{
   const regLink= /%(.*?)%/g
   const regItalic =/~(.*?)~/g
   const regParagraph =/{(.*?)}/g
+  const regHeading =/@(.*?)@/g
   const words= textValue.split(' ')
   console.log(words)
   return (
@@ -33,6 +34,13 @@ export const Preview=()=>{
           <p>
             {wrd.slice(1,wrd.length-1)}
             </p>
+            )
+        } else if(wrd.match(regHeading)){
+          console.log(wrd)
+          return (
+          <h2>
+            {wrd.slice(1,wrd.length-1)}
+            </h2>
             )
         }
         else return wrd+ ' '
