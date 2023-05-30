@@ -7,6 +7,7 @@ export const Preview=()=>{
   const regItalic =/~(.*?)~/g
   const regParagraph =/{(.*?)}/g
   const regHeading =/@(.*?)@/g
+  const regHeading2 =/@(.*?)@/g
   const words= textValue.split(' ')
   console.log(words)
   return (
