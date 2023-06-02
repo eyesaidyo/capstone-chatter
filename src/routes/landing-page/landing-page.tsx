@@ -1,16 +1,20 @@
+import { AboutSection } from "../../components/about/about-section"
 import { LandingPageWrap } from "./landing-page-styles"
 // import bcg from '../../assets/bacg.svg'
 export const LandingPage=()=>{
   return (
-  <LandingPageWrap>
+  <>
+    <LandingPageWrap>
     
-    <div className="text">
-      <div className="align">
-      <h1>Welcome to Chatter: A Haven for Text-Based Content</h1>
-      <p>Unleash the Power of Words. Connect with Like-Minded Readers and Writers</p>
-      <button>Get Started</button>
+      <div className="text">
+        <div className="align">
+        <h1>Welcome to Chatter: A Haven for Text-Based Content</h1>
+        <p>Unleash the Power of Words. Connect with Like-Minded Readers and Writers</p>
+        <button>Get Started</button>
+        </div>
       </div>
-    </div>
-  </LandingPageWrap>
+    </LandingPageWrap>
+    <AboutSection/>
+  </>
   )
 }

@@ -11,7 +11,6 @@ height: 100vh;
     position:absolute ;
     width: 100%;
     height: inherit;
-    /* text-align: center; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -52,7 +51,7 @@ height: 100vh;
     font-size: 1.2rem;
     margin-top:20px;
      :hover{
-      background: rgb(0, 40, 90);
+      background: rgb(0, 40, 90, 0.33);
       cursor: pointer;
     }
   }
