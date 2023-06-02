@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import bcg from '../../assets/bacg.svg'
-export const LandingPageWrap= styled.div`
+export const GetStartedWrap= styled.div`
 color:#fff;
 height: 100%;
 background-image: url(${bcg});
@@ -55,4 +55,21 @@ height: 100vh;
       cursor: pointer;
     }
   }
+`
+export const WhyJoinWrapper= styled.div`
+padding: 50px 11%;
+text-align: center;
+  & .boxes{
+    margin-top: 60px;
+    display: flex;
+    gap: 15px;
+  }
+  & h2{
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 33px;
+}
+& p{
+  font-size: 18px;
+}
 `
