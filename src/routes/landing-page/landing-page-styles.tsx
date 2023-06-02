@@ -112,7 +112,7 @@ export const CTAWrap = styled.div`
   display: flex;
   padding: 50px;
   & .img-wrap{
-    padding: 20px;
+    padding: 50px;
     display: flex;
     flex-direction: column;
     width: 40%;
@@ -143,5 +143,17 @@ export const CTAWrap = styled.div`
     margin-top:20px;
     }
     
+  }
+`
+export const Footer= styled.div`
+  background: rgba(255, 237, 204, 0.5);
+  display: flex;
+  
+  padding:70px;
+  h1{
+    color: #543EE0;
+  }
+  h3{
+    margin-bottom: 30px;
   }
 `

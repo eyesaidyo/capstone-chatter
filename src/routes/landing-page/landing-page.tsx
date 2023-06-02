@@ -1,6 +1,6 @@
 import { AboutSection } from "../../components/about/about-section"
 import { Box } from "../../components/box/box"
-import { CTAWrap, GetStartedWrap, ReviewWrapper, WhyJoinWrapper } from './landing-page-styles'
+import { CTAWrap, Footer, GetStartedWrap, ReviewWrapper, WhyJoinWrapper } from './landing-page-styles'
 import analyticsIcon from '../../assets/analytics.svg'
 import content from '../../assets/content.svg'
 import socials from '../../assets/socials.svg'
@@ -56,6 +56,26 @@ export const LandingPage=()=>{
         <button>Get started</button>
       </div>
     </CTAWrap>
+    <Footer>
+      <h1>CHATTER</h1>
+      <div>
+        <h3>Explore</h3>
+        <li>Community</li>
+        <li>Trending Blogs</li>
+        <li>Chatter for teams</li>
+      </div>
+      <div>
+        <h3>Support</h3>
+        <li>Support docs</li>
+        <li>Join slack</li>
+        <li>Contact for teams</li>
+      </div>
+      <div>
+        <h3>Official blog</h3>
+        <li>Official blog</li>
+        <li>Engineering blogs</li>
+      </div>
+    </Footer>
   </>
   )
 }
