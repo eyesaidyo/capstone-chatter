@@ -1,9 +1,10 @@
 import { AboutSection } from "../../components/about/about-section"
 import { Box } from "../../components/box/box"
-import { GetStartedWrap, WhyJoinWrapper } from './landing-page-styles'
+import { GetStartedWrap, ReviewWrapper, WhyJoinWrapper } from './landing-page-styles'
 import analyticsIcon from '../../assets/analytics.svg'
 import content from '../../assets/content.svg'
 import socials from '../../assets/socials.svg'
+import review from '../../assets/review.svg'
 // import bcg from '../../assets/bacg.svg'
 export const LandingPage=()=>{
   return (
@@ -30,6 +31,16 @@ export const LandingPage=()=>{
         
       </div>
     </WhyJoinWrapper>
+    <ReviewWrapper>
+      <div className="img">
+        <img src={review}/>
+      </div>
+      <div className="rev">
+        <em>"Chatter has become an integral part of my online experience. As a user of this incredible blogging platform, I have discovered a vibrant community of individuals who are passionate about sharing their ideas and engaging in thoughtful discussions.”</em>
+        <p><strong>Adebobola Muhydeen, </strong> <em>Software developer at Apple</em></p>
+        <button>Join Chatter</button>
+      </div>
+    </ReviewWrapper>
   </>
   )
 }

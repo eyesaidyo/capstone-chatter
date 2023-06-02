@@ -73,3 +73,38 @@ text-align: center;
   font-size: 18px;
 }
 `
+export const ReviewWrapper=styled.div`
+background: rgba(255, 237, 204, 0.5);
+display: flex;
+padding: 150px 10%;
+margin-left:auto;
+margin-right: auto;
+gap: 30px;
+  & img{
+    border-radius: 50%;
+  }
+  & .img{
+    width: 30%;
+    display: inline-block;
+  }
+  & button{
+    background: #543EE0;
+    border-radius: 8px;
+    color: #fff;
+    border: 1px solid #543EE0;
+    width: 150px;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2rem;
+    margin-top:20px;
+     :hover{
+      background: rgb(0, 40, 90, 0.33);
+      cursor: pointer;
+    }
+  }
+  & .rev{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+`
