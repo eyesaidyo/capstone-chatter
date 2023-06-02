@@ -1,10 +1,13 @@
 import { AboutSection } from "../../components/about/about-section"
 import { Box } from "../../components/box/box"
-import { GetStartedWrap, ReviewWrapper, WhyJoinWrapper } from './landing-page-styles'
+import { CTAWrap, GetStartedWrap, ReviewWrapper, WhyJoinWrapper } from './landing-page-styles'
 import analyticsIcon from '../../assets/analytics.svg'
 import content from '../../assets/content.svg'
 import socials from '../../assets/socials.svg'
 import review from '../../assets/review.svg'
+import stock1 from '../../assets/stock1.svg'
+import stock2 from '../../assets/stock2.svg'
+import stock3 from '../../assets/stock3.svg'
 // import bcg from '../../assets/bacg.svg'
 export const LandingPage=()=>{
   return (
@@ -41,6 +44,18 @@ export const LandingPage=()=>{
         <button>Join Chatter</button>
       </div>
     </ReviewWrapper>
+    <CTAWrap>
+      <div className="img-wrap">
+        <img src={stock1}/>
+        <img className="two" src={stock2}/>
+        <img src={stock3}/>
+      </div>
+      <div className="cta">
+        <h1>Write, read and connect with great minds on chatter</h1>
+        <p>Share people your great ideas, and also read write-ups based on your interests. connect with people of same interests and goals.</p>
+        <button>Get started</button>
+      </div>
+    </CTAWrap>
   </>
   )
 }

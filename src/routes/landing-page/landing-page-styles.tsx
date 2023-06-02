@@ -108,3 +108,40 @@ gap: 30px;
     justify-content: space-between;
   }
 `
+export const CTAWrap = styled.div`
+  display: flex;
+  padding: 50px;
+  & .img-wrap{
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    gap: -15px;
+    .two{
+      align-self: flex-end;
+    }
+
+  }
+  & img{
+    border-radius: 50%;
+    width: 40%;
+  }
+  & .cta{
+    padding: 70px 170px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    button{
+      background: #543EE0;
+    border-radius: 8px;
+    color: #fff;
+    border: 1px solid #543EE0;
+    width: 150px;
+    text-align: center;
+    padding: 10px;
+    font-size: 1.2rem;
+    margin-top:20px;
+    }
+    
+  }
+`
