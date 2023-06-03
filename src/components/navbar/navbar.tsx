@@ -1,5 +1,5 @@
 import { NavButtonItem, NavButtonsWrap, NavLinkItem, NavLinksWrap, NavWrap } from "./navbar-styles"
-import { Outlet } from "react-router-dom"
+import { Link, Outlet } from "react-router-dom"
 export const NavBar=()=>{
   return (
     <>
@@ -13,7 +13,7 @@ export const NavBar=()=>{
         </NavLinksWrap>
         <NavButtonsWrap>
           <NavButtonItem id="login">Log in</NavButtonItem>
-          <NavButtonItem id="sign-up">Sign up</NavButtonItem>
+          <Link to={'/sign-up'}><NavButtonItem  id="sign-up">Sign up</NavButtonItem></Link>
         </NavButtonsWrap>
       </NavWrap>
       <Outlet/>

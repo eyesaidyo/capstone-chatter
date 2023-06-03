@@ -146,6 +146,7 @@ export const CTAWrap = styled.div`
   }
 `
 export const Footer= styled.div`
+  margin-top: 50px;
   background: rgba(255, 237, 204, 0.5);
   display: flex;
   
