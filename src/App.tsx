@@ -10,9 +10,9 @@ function App() {
     <TextProvider>
       <Routes>
         <Route path='/' element={<NavBar/>}>
-        <Route index element={<LandingPage/>}></Route>
-        <Route path='/prev' element={<Preview />}></Route>
-        <Route path='/sign-up' element={<SignUpPage />}></Route>
+          <Route index element={<LandingPage/>}></Route>
+          <Route path='/prev' element={<Preview />}></Route>
+          <Route path='/sign-up' element={<SignUpPage />}></Route>
         </Route>
         
       </Routes>

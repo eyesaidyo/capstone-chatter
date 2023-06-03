@@ -1,17 +1,34 @@
 import styled from "styled-components";
-import signIn from "../../assets/react.svg"
+import signIn from "../../assets/sign-in.svg"
 export const SignUpWrapper= styled.div`
-   background-image: url(${signIn});
-  display: flex;
-  border: 2px solid red;
-  height: 100%;
+  box-sizing: border-box;
+  background-image: url(${signIn});
+  display: inline-block;
+  color: #fff;
+  font-size:1.5rem;
+  /* border: 2px solid red; */
+  height: 100vh;
+  width: 45%;
+  h1 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
   & .left{
-    background-image: url(${signIn});
     width: 40%;
   }
   .words{
     position: absolute;
-    width: 100%;
-    height: inherit;
+    width: 45%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.55);
+    padding: 200px 50px;
   }
+`
+export const FormWrapper=styled.div`
+  display: inline-block;
+  width: 55%;
+  padding: 100px;
+`
+export const SUPageWrapper = styled.div`
+  display: flex;
 `
