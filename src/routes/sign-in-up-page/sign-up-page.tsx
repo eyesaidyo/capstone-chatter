@@ -1,5 +1,5 @@
 import { FormWrapper, SignUpWrapper, SUPageWrapper } from "./sign-up-styles"
-
+import googleIcon from '../../assets/google.svg'
 export const SignUpPage=()=>{
   return (
     <SUPageWrapper>
@@ -22,9 +22,9 @@ export const SignUpPage=()=>{
             <input id="name" type={'text'}></input>
             <label >confirm password</label>
             <input id="name" type={'text'}></input>
-            <button>Create account</button>
+            <button className="create">Create account</button>
           </form>
-          <button>Sign up with Google</button>
+          <button><img src={googleIcon}/>Sign up with Google</button>
         </FormWrapper>
       </SUPageWrapper>
    
