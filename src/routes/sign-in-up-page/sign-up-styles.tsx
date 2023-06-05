@@ -29,7 +29,9 @@ export const FormWrapper=styled.div`
   width: 55%;
   padding: 100px;
    .create{
-    background-color: #543ee0;
+    background: #543ee0;
+    border: #543ee0;
+    border-radius: 5px;
     color: #fff;
   }
   button{
