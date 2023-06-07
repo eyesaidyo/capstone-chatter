@@ -1,6 +1,13 @@
 import { FormWrapper, SignUpWrapper, SUPageWrapper } from "./sign-up-styles"
 import googleIcon from '../../assets/google.svg'
+import { createUserDocFromAuth, signInWithGooglePopup } from "../../utils/firebase/firebase-utils"
 export const SignUpPage=()=>{
+  const signUp= async ():Promise<void>=>{
+    console.log('ff')
+    const {user} =await signInWithGooglePopup()
+    
+    createUserDocFromAuth(user)
+  }
   return (
     <SUPageWrapper>
      <SignUpWrapper>
@@ -24,7 +31,7 @@ export const SignUpPage=()=>{
             <input id="name" type={'text'}></input>
             <button className="create">Create account</button>
           </form>
-          <button><img src={googleIcon}/>Sign up with Google</button>
+          <button onClick={signUp}><img src={googleIcon}/>Sign up with Google</button>
         </FormWrapper>
       </SUPageWrapper>
    

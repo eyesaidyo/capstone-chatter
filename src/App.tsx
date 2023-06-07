@@ -5,8 +5,10 @@ import {Preview}  from './components/Preview'
 import {NavBar,} from './components/navbar/navbar'
 import { LandingPage } from './routes/landing-page/landing-page'
 import { SignUpPage } from './routes/sign-in-up-page/sign-up-page'
+import { UserProvider } from './contexts/user-context'
 function App() {
   return (
+    <UserProvider>
     <TextProvider>
       <Routes>
         <Route path='/' element={<NavBar/>}>
@@ -17,6 +19,7 @@ function App() {
         
       </Routes>
     </TextProvider>
+    </UserProvider>
   )
 }
 

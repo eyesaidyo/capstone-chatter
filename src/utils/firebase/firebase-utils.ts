@@ -1,49 +1,44 @@
 // Import the functions you need from the SDKs you need
 import { FirebaseError, initializeApp } from "firebase/app";
-// import { getAnalytics } from "firebase/analytics";
+ import { getAnalytics } from "firebase/analytics";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 import {
   signInWithPopup,
-  GoogleAuthProvider,
-  getAuth,
   
+  getAuth,
+  GoogleAuthProvider,
+  signOut,
   User
 } from 'firebase/auth'
 import {
-  getFirestore,
-  doc,
-  getDoc,
-  setDoc,
-  collection,
-  
-  query,
-  getDocs,
-} from "firebase/firestore";
+  getFirestore,doc,getDoc,setDoc,} from "firebase/firestore";
+
 // Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDvfs6PF8TfyOclGYMXNhHQQiSDwuisl2Y",
-  authDomain: "chatter-capstone.firebaseapp.com",
-  projectId: "chatter-capstone",
-  storageBucket: "chatter-capstone.appspot.com",
-  messagingSenderId: "718377893836",
-  appId: "1:718377893836:web:91b6072fba20c6f05da769",
-  measurementId: "G-Z67HQJMXVT"
+  apiKey: "AIzaSyAtPjfCriJ0p8CpYFmLRFPmDFMZYyAI9GE",
+  authDomain: "rasine-chatter.firebaseapp.com",
+  projectId: "rasine-chatter",
+  storageBucket: "rasine-chatter.appspot.com",
+  messagingSenderId: "652293126672",
+  appId: "1:652293126672:web:c17bdba94ba0e0eeaae895"
 };
-import 'firebase/auth'
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-// const analytics = getAnalytics(app);
-const db =getFirestore()
-const googleProvider = new GoogleAuthProvider()
+const googleProvider = new GoogleAuthProvider();
+googleProvider.setCustomParameters({
+  prompt: "select_account",
+});
 export const auth = getAuth();
 export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
-  export const createUserDocFromAuth = async (userAuth:User) => {
+const db =getFirestore()
+
+export const createUserDocFromAuth = async (userAuth:User) => {
     if (!userAuth) return;
     const userDocRef = doc(db, "users", userAuth.uid);
-    // console.log(userDocRef);
+     console.log(userDocRef);
     const userSnapshot = await getDoc(userDocRef);
     //console.log(userSnapshot);
     if (!userSnapshot.exists()) {
@@ -68,4 +63,7 @@ export const signInWithGooglePopup = () =>
       }
     }
     return userDocRef;
+  };
+  export const signOutUser = async () => {
+    await signOut(auth);
   };
