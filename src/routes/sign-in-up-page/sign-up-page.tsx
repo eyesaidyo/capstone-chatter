@@ -1,12 +1,16 @@
 import { FormWrapper, SignUpWrapper, SUPageWrapper } from "./sign-up-styles"
 import googleIcon from '../../assets/google.svg'
 import { createUserDocFromAuth, signInWithGooglePopup } from "../../utils/firebase/firebase-utils"
+import { UserContext } from "../../contexts/user-context"
+import { useContext } from "react"
 export const SignUpPage=()=>{
+  const {currentUser, setCurrentUser} =useContext(UserContext)
   const signUp= async ():Promise<void>=>{
     console.log('ff')
     const {user} =await signInWithGooglePopup()
     
     createUserDocFromAuth(user)
+    setCurrentUser(user.uid)
   }
   return (
     <SUPageWrapper>
