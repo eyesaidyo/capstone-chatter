@@ -1,10 +1,10 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useState,  } from "react";
-interface User{
+interface UserType{
  currentUser: null|string;
  setCurrentUser: Dispatch<SetStateAction<null|string>>;
 
 }
-const defaultCon:User={
+const defaultCon:UserType={
     currentUser: null,
     setCurrentUser: ()=>null,
 
@@ -15,7 +15,7 @@ interface UserProps{
 }
 export const UserProvider = (props:UserProps) => {
   const [currentUser, setCurrentUser] = useState<null|string>(null);
-  const value:User = { currentUser, setCurrentUser };
+  const value:UserType = { currentUser, setCurrentUser };
 
   return <UserContext.Provider value={value}>{props.children}</UserContext.Provider>;
 };

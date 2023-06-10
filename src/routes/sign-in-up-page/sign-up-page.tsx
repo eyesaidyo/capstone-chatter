@@ -3,15 +3,20 @@ import googleIcon from '../../assets/google.svg'
 import { createUserDocFromAuth, signInWithGooglePopup } from "../../utils/firebase/firebase-utils"
 import { UserContext } from "../../contexts/user-context"
 import { useContext } from "react"
+import {useNavigate} from 'react-router-dom'
 export const SignUpPage=()=>{
+  const navigate= useNavigate()
   const {currentUser, setCurrentUser} =useContext(UserContext)
+
   const signUp= async ():Promise<void>=>{
-    console.log('ff')
     const {user} =await signInWithGooglePopup()
     
     createUserDocFromAuth(user)
     setCurrentUser(user.uid)
+    console.log(` currentuser is ${currentUser}`)
+    navigate('/dashboard')
   }
+
   return (
     <SUPageWrapper>
      <SignUpWrapper>

@@ -1,3 +1,10 @@
-export const Dashboard=({userId})=>{
-  <h1>hello {userId}</h1>
+import {useContext} from 'react'
+import { UserContext } from '../../contexts/user-context'
+
+
+
+
+export const Dashboard=()=>{
+  const {currentUser, setCurrentUser} =useContext(UserContext)
+  return <h1>hello {currentUser}</h1>
 }

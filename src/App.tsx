@@ -5,8 +5,12 @@ import {Preview}  from './components/Preview'
 import {NavBar,} from './components/navbar/navbar'
 import { LandingPage } from './routes/landing-page/landing-page'
 import { SignUpPage } from './routes/sign-in-up-page/sign-up-page'
-import { UserProvider } from './contexts/user-context'
+import { UserContext, UserProvider } from './contexts/user-context'
+import { useContext } from 'react'
+import { Dashboard } from './routes/dashboard/dashboard'
 function App() {
+  const {currentUser}= useContext(UserContext)
+  console.log(`app ${currentUser}`)
   return (
     <UserProvider>
     <TextProvider>
@@ -16,7 +20,7 @@ function App() {
           <Route path='/prev' element={<Preview />}></Route>
           <Route path='/sign-up' element={<SignUpPage />}></Route>
         </Route>
-        
+        <Route path='/dashboard' element={<Dashboard/>}></Route>
       </Routes>
     </TextProvider>
     </UserProvider>
