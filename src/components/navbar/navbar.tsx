@@ -1,6 +1,12 @@
 import { NavButtonItem, NavButtonsWrap, NavLinkItem, NavLinksWrap, NavWrap } from "./navbar-styles"
-import { Link, Outlet } from "react-router-dom"
+import { Link, Outlet, useNavigate } from "react-router-dom"
+import { signInWithGooglePopup } from "../../utils/firebase/firebase-utils"
 export const NavBar=()=>{
+  const navigate= useNavigate()
+  function handleLogin(){
+    signInWithGooglePopup()
+    navigate('/dashboard')
+  }
   return (
     <>
       <NavWrap>
@@ -12,7 +18,7 @@ export const NavBar=()=>{
           <NavLinkItem to='blogs'>Blogs</NavLinkItem>
         </NavLinksWrap>
         <NavButtonsWrap>
-          <NavButtonItem id="login">Log in</NavButtonItem>
+          <NavButtonItem id="login" onClick={handleLogin}>Log in</NavButtonItem>
           <Link to={'/sign-up'}><NavButtonItem  id="sign-up">Sign up</NavButtonItem></Link>
         </NavButtonsWrap>
       </NavWrap>
