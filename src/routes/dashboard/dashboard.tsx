@@ -1,10 +1,9 @@
-import {useContext} from 'react'
-import { UserContext } from '../../contexts/user-context'
-
-
-
-
+import { DashboardMenu } from '../../components/dashboard-menu/dashboard-menu'
+import { DashboardWrapper } from './dashboard-styles'
 export const Dashboard=()=>{
-  const {currentUser, setCurrentUser} =useContext(UserContext)
-  return <h1>hello {currentUser}</h1>
+  return (
+    <DashboardWrapper>
+      <DashboardMenu/>
+    </DashboardWrapper>
+  )
 }
