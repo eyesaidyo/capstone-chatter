@@ -31,11 +31,11 @@ export const DashboardMenu=()=>{
           <img src={profile}/>
           <span>Profile</span>
         </ItemWrap>
-        <p>Log out</p>
+        <p className="logout">Log out</p>
         <button>Create Post</button>
         
       </MenuWrap>
-      <Outlet/>
+     
     </>
   )
 }

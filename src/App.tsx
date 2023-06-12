@@ -8,6 +8,7 @@ import { SignUpPage } from './routes/sign-in-up-page/sign-up-page'
 import { UserContext, UserProvider } from './contexts/user-context'
 import { useContext } from 'react'
 import { Dashboard } from './routes/dashboard/dashboard'
+import { Feed } from './routes/feed/feed'
 function App() {
   const {currentUser}= useContext(UserContext)
   console.log(`app ${currentUser}`)
@@ -20,7 +21,9 @@ function App() {
           <Route path='/prev' element={<Preview />}></Route>
           <Route path='/sign-up' element={<SignUpPage />}></Route>
         </Route>
-        <Route path='/dashboard' element={<Dashboard/>}></Route>
+        <Route path='/dashboard' element={<Dashboard/>}>
+          <Route index element={<Feed/>}></Route>
+        </Route>
       </Routes>
     </TextProvider>
     </UserProvider>
