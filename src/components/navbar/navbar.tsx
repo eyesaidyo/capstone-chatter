@@ -1,10 +1,14 @@
 import { NavButtonItem, NavButtonsWrap, NavLinkItem, NavLinksWrap, NavWrap } from "./navbar-styles"
 import { Link, Outlet, useNavigate } from "react-router-dom"
 import { signInWithGooglePopup } from "../../utils/firebase/firebase-utils"
+import { useContext } from "react"
+import { UserContext } from "../../contexts/user-context"
 export const NavBar=()=>{
+  const {setCurrentUser} = useContext(UserContext)
   const navigate= useNavigate()
-  function handleLogin(){
-    signInWithGooglePopup()
+  async function handleLogin(){
+    const {user}= await signInWithGooglePopup()
+    setCurrentUser(user.uid)
     navigate('/dashboard')
   }
   return (
