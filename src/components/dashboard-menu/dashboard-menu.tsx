@@ -1,4 +1,3 @@
-import { Outlet } from "react-router-dom"
 import { ItemWrap, MenuWrap } from "./dashboard-menu-styles"
 import feedIcon from '../../assets/feed-icon.svg'
 import draftsIcon from '../../assets/drafts-icon.svg'
