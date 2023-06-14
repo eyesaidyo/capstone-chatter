@@ -4,6 +4,7 @@ import draftsIcon from '../../assets/drafts-icon.svg'
 import analytics from '../../assets/analytics-icon.svg'
 import notifs from '../../assets/notifications-icon.svg'
 import profile from '../../assets/profile-icon.svg'
+import { Link } from "react-router-dom"
 export const DashboardMenu=()=>{
   return (
     <>
@@ -31,7 +32,7 @@ export const DashboardMenu=()=>{
           <span>Profile</span>
         </ItemWrap>
         <p className="logout">Log out</p>
-        <button>Create Post</button>
+        <Link to='create'><button>Create Post</button></Link>
         
       </MenuWrap>
      

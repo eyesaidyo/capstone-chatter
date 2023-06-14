@@ -1,4 +1,4 @@
-import { TextProvider } from './components/TextEditor'
+import { TextEditor, TextProvider } from './components/TextEditor'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
 import {Preview}  from './components/Preview'
@@ -23,6 +23,7 @@ function App() {
         </Route>
         <Route path='/dashboard' element={<Dashboard/>}>
           <Route index element={<Feed/>}></Route>
+          <Route path='create' element={<TextEditor/>} ></Route>
         </Route>
       </Routes>
     </TextProvider>
