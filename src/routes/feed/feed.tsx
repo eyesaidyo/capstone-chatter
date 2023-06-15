@@ -2,8 +2,15 @@ import { PostItem } from "../../components/post-item/post-item"
 import { FeedWrap } from "./feed-styles"
 import pfp from '../../assets/postPFP.svg'
 import img from '../../assets/postIMG.svg'
+import { useEffect } from "react"
 
 export const Feed=()=>{
+  const getFeed=()=>null
+  useEffect(
+    ()=>{
+      getFeed()
+    },[]
+  )
   const date = new Date()
   return (
     <>
