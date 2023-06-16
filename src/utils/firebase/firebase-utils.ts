@@ -13,7 +13,7 @@ import {
   User
 } from 'firebase/auth'
 import {
-  getFirestore,doc,getDoc,setDoc,} from "firebase/firestore";
+  getFirestore,doc,getDoc,setDoc, collection ,} from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -69,3 +69,10 @@ export const createUserDocFromAuth = async (userAuth:User) => {
   export const signOutUser = async () => {
     await signOut(auth);
   };
+  export const getGlobalPosts=async ()=>{
+    const docReferenceGlobal=doc( db, 'globalPosts', 'general')
+    const allPostsSnapshot= await getDoc(docReferenceGlobal)
+    .then(res=>res.data())
+    .then(res=>res?res['zero']:null)
+    console.log(allPostsSnapshot)
+  }

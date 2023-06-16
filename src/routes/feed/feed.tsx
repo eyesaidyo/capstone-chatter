@@ -3,11 +3,13 @@ import { FeedWrap } from "./feed-styles"
 import pfp from '../../assets/postPFP.svg'
 import img from '../../assets/postIMG.svg'
 import { useEffect, useState } from "react"
+import { getGlobalPosts } from "../../utils/firebase/firebase-utils"
 
 export const Feed=()=>{
   const [feed, setFeed] = useState([])
   const getFeed=()=>{
     console.log('fetchin feed...')
+    getGlobalPosts()
   }
   useEffect(
     ()=>{
