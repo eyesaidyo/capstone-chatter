@@ -5,7 +5,7 @@ interface PostProps{
   date:number;
   title:string;
   summary:string;
-  articleSRC:string;
+  articleSRC?:string;
 }
 export const PostItem=(props:PostProps)=>{
   return (

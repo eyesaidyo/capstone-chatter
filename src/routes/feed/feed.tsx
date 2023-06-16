@@ -2,10 +2,13 @@ import { PostItem } from "../../components/post-item/post-item"
 import { FeedWrap } from "./feed-styles"
 import pfp from '../../assets/postPFP.svg'
 import img from '../../assets/postIMG.svg'
-import { useEffect } from "react"
+import { useEffect, useState } from "react"
 
 export const Feed=()=>{
-  const getFeed=()=>null
+  const [feed, setFeed] = useState([])
+  const getFeed=()=>{
+    console.log('fetchin feed...')
+  }
   useEffect(
     ()=>{
       getFeed()

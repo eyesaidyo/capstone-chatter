@@ -25,6 +25,9 @@ export const MenuWrap=styled.div`
   }
   .logout{
     color:red;
+    & :hover{
+      cursor: pointer;
+    }
   }
 `
 export const ItemWrap= styled.div`
