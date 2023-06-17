@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef,  useContext,  } from "react"
 import {Link}  from 'react-router-dom'
 import { createContext } from "react"
+import { TextEditorWrap } from "./text-editor-styles"
 interface Text{children:React.ReactNode}
 interface TextCon{
             textValue:string, 
@@ -32,7 +33,7 @@ export const TextEditor=()=>{
   }
  
   return(
-    <>
+    <TextEditorWrap>
     <div>
       <textarea 
       placeholder="your text here"
@@ -44,15 +45,14 @@ export const TextEditor=()=>{
       >
 
       </textarea>
-    </div>
-    <div className="btn-container">
-      <button onClick={()=>handleCharacter('%%')}>link</button>
-      <button onClick={()=>handleCharacter('~~')}>italic</button>
-      <button onClick={()=>handleCharacter('[]')}>bold</button>
-      <button onClick={()=>handleCharacter('{}')}>paragraph</button>
+      <div className="btn-container">
+        <button onClick={()=>handleCharacter('%%')}>link</button>
+        <button onClick={()=>handleCharacter('~~')}>italic</button>
+        <button onClick={()=>handleCharacter('[]')}>bold</button>
+        <button onClick={()=>handleCharacter('{}')}>paragraph</button>
       <Link to={'prev'} >preview</Link>
+      </div>
     </div>
-    
-  </>
+  </TextEditorWrap>
   )
 }

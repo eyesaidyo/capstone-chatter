@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { TextContext } from "./TextEditor"
+import { TextContext } from "../routes/text-editor/TextEditor"
 export const Preview=()=>{
   const {textValue} = useContext(TextContext) 
   const regBold= new RegExp(/\[(.*?)\]/g)
