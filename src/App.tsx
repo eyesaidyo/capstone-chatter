@@ -18,12 +18,13 @@ function App() {
       <Routes>
         <Route path='/' element={<NavBar/>}>
           <Route index element={<LandingPage/>}></Route>
-          <Route path='/prev' element={<Preview />}></Route>
+          
           <Route path='/sign-up' element={<SignUpPage />}></Route>
         </Route>
         <Route path='/dashboard' element={<Dashboard/>}>
           <Route index element={<Feed/>}></Route>
           <Route path='create' element={<TextEditor/>} ></Route>
+          <Route path='prev' element={<Preview />}></Route>
         </Route>
       </Routes>
     </TextProvider>

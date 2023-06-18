@@ -50,7 +50,7 @@ export const TextEditor=()=>{
         <button onClick={()=>handleCharacter('~~')}>italic</button>
         <button onClick={()=>handleCharacter('[]')}>bold</button>
         <button onClick={()=>handleCharacter('{}')}>paragraph</button>
-      <Link to={'prev'} >preview</Link>
+      <Link to={'/dashboard/prev'} >preview</Link>
       </div>
     </div>
   </TextEditorWrap>
