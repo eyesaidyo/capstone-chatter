@@ -1,5 +1,6 @@
 import { useContext } from "react"
-import { TextContext } from "../routes/text-editor/TextEditor"
+import { TextContext } from "../text-editor/TextEditor"
+import { PreviewWrap } from "./preview.styles"
 export const Preview=()=>{
   const {textValue} = useContext(TextContext) 
   const regBold= new RegExp(/\[(.*?)\]/g)
@@ -8,10 +9,10 @@ export const Preview=()=>{
   const regParagraph =/{(.*?)}/g
   const regHeading =/@(.*?)@/g
   const regHeading2 =/@(.*?)@/g
-  const words= textValue.split(' ')
+  const words= textValue.split('\n')
   console.log(words)
   return (
-    <div className="prev">
+    <PreviewWrap>
     {
       words.map((wrd, idx)=>{
         if(wrd.match(regBold)){
@@ -44,10 +45,10 @@ export const Preview=()=>{
             </h2>
             )
         }
-        else return wrd+ ' '
+        else return <p>{wrd}</p>
       })
     }
 
-  </div>
+  </PreviewWrap>
   )
 }

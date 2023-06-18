@@ -12,12 +12,13 @@ export const DashboardMenu=()=>{
   return (
     <>
       <MenuWrap>
-        <h1>CHATTER</h1>
-        
+        <Link to='/dashboard'><h1>CHATTER</h1></Link>
+        <Link to='dashboard/feed'>
         <ItemWrap>
           <img src={feedIcon}/>
           <span>Feed</span>
         </ItemWrap>
+        </Link>
         <ItemWrap>
           <img src={draftsIcon}/>
           <span>Drafts</span>

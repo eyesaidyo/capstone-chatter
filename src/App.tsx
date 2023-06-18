@@ -1,7 +1,7 @@
 import { TextEditor, TextProvider } from './routes/text-editor/TextEditor'
 import './App.css'
 import { Route, Routes } from 'react-router-dom'
-import {Preview}  from './components/Preview'
+import {Preview}  from './routes/preview/Preview'
 import {NavBar,} from './components/navbar/navbar'
 import { LandingPage } from './routes/landing-page/landing-page'
 import { SignUpPage } from './routes/sign-in-up-page/sign-up-page'
