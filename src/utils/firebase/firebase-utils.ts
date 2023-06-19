@@ -13,7 +13,7 @@ import {
   User
 } from 'firebase/auth'
 import {
-  getFirestore,doc,getDoc,setDoc, collection ,} from "firebase/firestore";
+  getFirestore,doc,getDoc,setDoc, updateDoc ,} from "firebase/firestore";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -47,12 +47,14 @@ export const createUserDocFromAuth = async (userAuth:User) => {
       const { displayName, email } = userAuth;
       const createdAt = new Date();
       const notes:string[] = [];
+      const currentPost=''
       try {
         await setDoc(userDocRef, {
           displayName,
           email,
           createdAt,
           notes,
+          currentPost
         });
       } catch (error) {
         if (error instanceof FirebaseError) {
@@ -75,4 +77,13 @@ export const createUserDocFromAuth = async (userAuth:User) => {
     .then(res=>res.data())
     .then(res=>res?res['zero']:null)
     console.log(allPostsSnapshot)
+  }
+  
+  export const editField= async (user:string|null, field:string, newValue:string)=>{
+    if (user){
+    const docRef= doc(db, 'users', user )
+    await updateDoc(docRef, {
+      [field]: newValue
+    })
+  }
   }

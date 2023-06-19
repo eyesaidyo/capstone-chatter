@@ -5,13 +5,11 @@ import {Preview}  from './routes/preview/Preview'
 import {NavBar,} from './components/navbar/navbar'
 import { LandingPage } from './routes/landing-page/landing-page'
 import { SignUpPage } from './routes/sign-in-up-page/sign-up-page'
-import { UserContext, UserProvider } from './contexts/user-context'
-import { useContext } from 'react'
+import { UserProvider } from './contexts/user-context'
 import { Dashboard } from './routes/dashboard/dashboard'
 import { Feed } from './routes/feed/feed'
 function App() {
-  const {currentUser}= useContext(UserContext)
-  console.log(`app ${currentUser}`)
+
   return (
     <UserProvider>
     <TextProvider>

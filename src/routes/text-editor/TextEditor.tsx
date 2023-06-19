@@ -1,7 +1,9 @@
-import { useState, useEffect, useRef,  useContext,  } from "react"
+import { useState,  useRef,  useContext,  } from "react"
 import {Link}  from 'react-router-dom'
 import { createContext } from "react"
 import { TextAreaWrap, TextEditorWrap } from "./text-editor-styles"
+import { editField } from "../../utils/firebase/firebase-utils"
+import { UserContext } from "../../contexts/user-context"
 interface Text{children:React.ReactNode}
 interface TextCon{
             textValue:string, 
@@ -21,9 +23,7 @@ export const TextProvider=(props:Text)=>{
 export const TextEditor=()=>{
   const textAreaRef= useRef<HTMLTextAreaElement>(null)
   const {textValue, setTextValue}= useContext(TextContext)
-  useEffect(()=>{
-    setTextValue('')
-  },[setTextValue])
+  const {currentUser, } = useContext(UserContext)
 
   const handleCharacter=(xter:string):void=>{
     const cursor= textAreaRef.current?.selectionStart
@@ -40,7 +40,11 @@ export const TextEditor=()=>{
       id="text"
       // value={textValue}
       value={textValue}
-      onChange={(e) => setTextValue(e.target.value)}
+      onChange={(e) => {
+        setTextValue(e.target.value)
+        console.log(`editing for ${currentUser}`)
+        editField(currentUser, 'currentPost', textValue)
+      }}
       ref={textAreaRef}
       >
 

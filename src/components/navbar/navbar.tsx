@@ -9,6 +9,7 @@ export const NavBar=()=>{
   async function handleLogin(){
     const {user}= await signInWithGooglePopup()
     setCurrentUser(user.uid)
+    console.log (`nav--currenUser is ${user.uid}`)
     navigate('/dashboard')
   }
   return (
