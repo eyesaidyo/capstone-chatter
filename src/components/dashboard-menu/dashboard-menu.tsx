@@ -13,7 +13,7 @@ export const DashboardMenu=()=>{
     <>
       <MenuWrap>
         <Link to='/dashboard'><h1>CHATTER</h1></Link>
-        <Link to='dashboard/feed'>
+        <Link to='/dashboard'>
         <ItemWrap>
           <img src={feedIcon}/>
           <span>Feed</span>
