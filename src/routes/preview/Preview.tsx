@@ -8,7 +8,7 @@ export const Preview=()=>{
   const regItalic =/~(.*?)~/g
   const regParagraph =/{(.*?)}/g
   const regHeading =/@(.*?)@/g
-  const regHeading2 =/@(.*?)@/g
+  const regHeading2 =/#(.*?)#/g
   const words= textValue.split('\n')
   console.log(words)
   return (
@@ -24,10 +24,20 @@ export const Preview=()=>{
             </a>
             )
         }else if(wrd.match(regItalic)){
+          console.log("ital-"+ wrd.slice(wrd.lastIndexOf('~')+1, wrd.length))
           return (
-          <em>
-            {wrd.slice(1,wrd.length-1)}
-            </em>
+            <p>
+              {
+              wrd.slice(0, wrd.indexOf('~'))
+              }
+              <em>
+              {wrd.slice(wrd.indexOf('~')+1, wrd.indexOf('~', wrd.indexOf('~')+1))}
+              </em>
+              {
+                wrd.slice(wrd.lastIndexOf('~')+1, wrd.length
+                )
+              }
+            </p>
             )
         }
         else if(wrd.match(regParagraph)){
@@ -41,7 +51,7 @@ export const Preview=()=>{
           console.log(wrd)
           return (
           <h2>
-            {wrd.slice(1,wrd.length-1)}
+            {wrd.slice(wrd.indexOf('@')+1,wrd.length-1)}
             </h2>
             )
         }
