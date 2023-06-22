@@ -18,9 +18,10 @@ export const Preview=()=>{
         if(wrd.match(regBold)){
           return <strong>{wrd.slice(1,wrd.length-1)}</strong>
         }else if(wrd.match(regLink)){
+          console.log(wrd.split(' '))
           return (
-          <a href={wrd.slice(1,wrd.length-1)}>
-            {words[idx-1]}
+          <a href={wrd.slice(wrd.indexOf('%')+1,wrd.lastIndexOf('%'))}>
+            {wrd.split(' ').map((w,i)=>w.includes('%')?wrd.split(' ')[i+1]:null)}
             </a>
             )
         }else if(wrd.match(regItalic)){
