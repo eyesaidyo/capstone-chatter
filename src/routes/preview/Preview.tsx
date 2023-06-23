@@ -3,7 +3,7 @@ import { TextContext } from "../text-editor/TextEditor"
 import { PreviewWrap } from "./preview.styles"
 export const Preview=()=>{
   const {textValue} = useContext(TextContext) 
-  const regBold= new RegExp(/\[(.*?)\]/g)
+  const regBold= new RegExp(/<(.*?)</g)
   const regLink= /%(.*?)%/g
   const regItalic =/~(.*?)~/g
   const regParagraph =/{(.*?)}/g
@@ -14,9 +14,18 @@ export const Preview=()=>{
   return (
     <PreviewWrap>
     {
-      words.map((wrd, idx)=>{
+      words.map((wrd, )=>{
         if(wrd.match(regBold)){
-          return <strong>{wrd.slice(1,wrd.length-1)}</strong>
+          return (
+            <p>
+              {wrd.slice(0, wrd.indexOf('<'))}
+              <strong>{wrd.slice(wrd.indexOf("<")+1,wrd.lastIndexOf('<'))}</strong>
+              {
+                wrd.slice(wrd.lastIndexOf('<')+1, wrd.length
+                )
+              }
+            </p>
+          )
         }else if(wrd.match(regLink)){
           console.log(wrd.split(' '))
           return (
