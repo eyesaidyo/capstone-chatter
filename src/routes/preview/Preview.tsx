@@ -64,6 +64,13 @@ export const Preview=()=>{
             {wrd.slice(wrd.indexOf('@')+1,wrd.length-1)}
             </h2>
             )
+        }   else if(wrd.match(regHeading2)){
+          console.log(wrd)
+          return (
+          <h3>
+            {wrd.slice(wrd.indexOf('#')+1,wrd.length-1)}
+            </h3>
+            )
         }
         else return <p>{wrd}</p>
       })
