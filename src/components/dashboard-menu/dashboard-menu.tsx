@@ -14,15 +14,17 @@ export const DashboardMenu=()=>{
       <MenuWrap>
         <Link to='/dashboard'><h1>CHATTER</h1></Link>
         <Link to='/dashboard'>
-        <ItemWrap>
-          <img src={feedIcon}/>
-          <span>Feed</span>
-        </ItemWrap>
+          <ItemWrap>
+            <img src={feedIcon}/>
+            <span>Feed</span>
+          </ItemWrap>
         </Link>
-        <ItemWrap>
-          <img src={draftsIcon}/>
-          <span>Drafts</span>
-        </ItemWrap>
+        <Link to='drafts'>
+          <ItemWrap>
+            <img src={draftsIcon}/>
+            <span>Drafts</span>
+          </ItemWrap>
+        </Link>
         <ItemWrap>
           <img src={notifs}/>
           <span>Notifications</span>

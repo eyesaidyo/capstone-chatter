@@ -8,6 +8,7 @@ import { SignUpPage } from './routes/sign-in-up-page/sign-up-page'
 import { UserProvider } from './contexts/user-context'
 import { Dashboard } from './routes/dashboard/dashboard'
 import { Feed } from './routes/feed/feed'
+import { Drafts } from './routes/drafts/drafts'
 function App() {
 
   return (
@@ -23,6 +24,7 @@ function App() {
           <Route index element={<Feed/>}></Route>
           <Route path='create' element={<TextEditor/>} ></Route>
           <Route path='prev' element={<Preview />}></Route>
+          <Route path='drafts' element={<Drafts />}></Route>
         </Route>
       </Routes>
     </TextProvider>
