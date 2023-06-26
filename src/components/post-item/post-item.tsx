@@ -1,7 +1,7 @@
 import { PostWrap } from "./post-item-styles"
 interface PostProps{
-  avatarSRC:string;
-  name:string;
+  avatarSRC?:string;
+  name?:string;
   date:number;
   title:string;
   summary:string;
