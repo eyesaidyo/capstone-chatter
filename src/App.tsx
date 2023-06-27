@@ -9,25 +9,28 @@ import { UserProvider } from './contexts/user-context'
 import { Dashboard } from './routes/dashboard/dashboard'
 import { Feed } from './routes/feed/feed'
 import { Drafts } from './routes/drafts/drafts'
+import { DraftsProvider } from './contexts/drafts-context'
 function App() {
 
   return (
     <UserProvider>
-    <TextProvider>
-      <Routes>
-        <Route path='/' element={<NavBar/>}>
-          <Route index element={<LandingPage/>}></Route>
-          
-          <Route path='/sign-up' element={<SignUpPage />}></Route>
-        </Route>
-        <Route path='/dashboard' element={<Dashboard/>}>
-          <Route index element={<Feed/>}></Route>
-          <Route path='create' element={<TextEditor/>} ></Route>
-          <Route path='prev' element={<Preview />}></Route>
-          <Route path='drafts' element={<Drafts />}></Route>
-        </Route>
-      </Routes>
-    </TextProvider>
+      <DraftsProvider>
+        <TextProvider>
+          <Routes>
+            <Route path='/' element={<NavBar/>}>
+              <Route index element={<LandingPage/>}></Route>
+              
+              <Route path='/sign-up' element={<SignUpPage />}></Route>
+            </Route>
+            <Route path='/dashboard' element={<Dashboard/>}>
+              <Route index element={<Feed/>}></Route>
+              <Route path='create' element={<TextEditor/>} ></Route>
+              <Route path='prev' element={<Preview />}></Route>
+              <Route path='drafts' element={<Drafts />}></Route>
+            </Route>
+          </Routes>
+        </TextProvider>
+      </DraftsProvider>
     </UserProvider>
   )
 }
