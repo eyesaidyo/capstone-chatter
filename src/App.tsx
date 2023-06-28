@@ -19,7 +19,6 @@ function App() {
           <Routes>
             <Route path='/' element={<NavBar/>}>
               <Route index element={<LandingPage/>}></Route>
-              
               <Route path='/sign-up' element={<SignUpPage />}></Route>
             </Route>
             <Route path='/dashboard' element={<Dashboard/>}>
