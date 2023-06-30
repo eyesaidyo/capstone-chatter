@@ -31,6 +31,9 @@ export const NavButtonItem= styled.button`
     padding: 10px ; 
     border: 1px solid #543ee0;
     border-radius: 15px;
+    :hover{
+      cursor: pointer;
+    }
     &#login{
     background-color: #fff;
   } &#sign-up{
