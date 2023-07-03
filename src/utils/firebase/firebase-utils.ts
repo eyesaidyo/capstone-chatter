@@ -76,7 +76,7 @@ export const createUserDocFromAuth = async (userAuth:User) => {
     const allPostsSnapshot= await getDoc(docReferenceGlobal)
     .then(res=>res.data())
     .then(res=>res?res['zero']:null)
-    console.log(allPostsSnapshot)
+    return allPostsSnapshot
   }
   
   export const editField= async (user:string|null, field:string, newValue:string)=>{

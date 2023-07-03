@@ -31,7 +31,9 @@ export const TextEditor=()=>{
     const newTextValue=words?.slice(0, cursor).concat(`${xter} ${words.slice(cursor, words.length)}` )
     setTextValue(newTextValue)
   }
- 
+  const publishPost=()=>{
+    console.log('publishin')
+  }
   return(
     <TextEditorWrap>
     <div>
@@ -54,7 +56,8 @@ export const TextEditor=()=>{
         <button onClick={()=>handleCharacter('~~')}>italic</button>
         <button onClick={()=>handleCharacter('[]')}>bold</button>
         <button onClick={()=>handleCharacter('{}')}>paragraph</button>
-      <Link to={'/dashboard/prev'} >preview</Link>
+        <Link to={'/dashboard/prev'} >preview</Link>
+        <button onClick={()=>publishPost()}>publish</button>
       </div>
     </div>
   </TextEditorWrap>

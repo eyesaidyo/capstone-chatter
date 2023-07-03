@@ -1,5 +1,5 @@
 import { PostWrap } from "./post-item-styles"
-interface PostProps{
+export interface PostProps{
   avatarSRC?:string;
   name?:string;
   date:number;
