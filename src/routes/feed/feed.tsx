@@ -34,7 +34,7 @@ export const Feed = () => {
           avatarSRC={pfp}
           articleSRC={img}
           content="a story on dragon training"
-          date={date.getDate()}
+          date={`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
           name="rajon irem"
         />
         <PostItem
@@ -42,7 +42,7 @@ export const Feed = () => {
           avatarSRC={pfp}
           articleSRC={img}
           content="a story on dragon training"
-          date={date.getDate()}
+          date={`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
           name="rajon irem"
         />
         <PostItem
@@ -50,7 +50,7 @@ export const Feed = () => {
           avatarSRC={pfp}
           articleSRC={img}
           content="a story on dragon training"
-          date={date.getDate()}
+          date={`${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`}
           name="rajon irem"
         />
         <h1>{feed[0].content}</h1>

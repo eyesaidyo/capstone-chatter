@@ -2,7 +2,7 @@ import { PostWrap } from "./post-item-styles";
 export interface PostProps {
   avatarSRC?: string;
   name?: string;
-  date: number;
+  date: string;
   title: string;
   content: string;
   articleSRC?: string;

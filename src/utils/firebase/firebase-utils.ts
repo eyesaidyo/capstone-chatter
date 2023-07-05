@@ -13,7 +13,8 @@ import {
   User
 } from 'firebase/auth'
 import {
-  getFirestore,doc,getDoc,setDoc, updateDoc ,} from "firebase/firestore";
+  getFirestore,doc,getDoc,setDoc, updateDoc, collection, addDoc ,} from "firebase/firestore";
+import { PostProps } from "../../components/post-item/post-item";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -86,4 +87,10 @@ export const createUserDocFromAuth = async (userAuth:User) => {
       [field]: newValue
     })
   }
+  }
+  export const addPost= async (data:PostProps)=>{
+    // const docRef= doc(db, 'globalPosts')
+    const col=  collection(db,'users')
+    await addDoc(col,data)
+    
   }
