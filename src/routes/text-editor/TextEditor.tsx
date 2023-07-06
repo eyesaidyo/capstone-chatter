@@ -1,7 +1,11 @@
 import { useState, useRef, useContext } from "react";
 import { Link } from "react-router-dom";
 import { createContext } from "react";
-import { TextAreaWrap, TextEditorWrap } from "./text-editor-styles";
+import {
+  TextAreaWrap,
+  TextEditorWrap,
+  TitleAreaWrap,
+} from "./text-editor-styles";
 import { addPost, editField } from "../../utils/firebase/firebase-utils";
 import { UserContext } from "../../contexts/user-context";
 interface Text {
@@ -10,23 +14,28 @@ interface Text {
 interface TextCon {
   textValue: string;
   setTextValue: React.Dispatch<React.SetStateAction<string>>;
+  titleValue: string;
+  setTitleValue: React.Dispatch<React.SetStateAction<string>>;
 }
 const def: TextCon = {
   textValue: "",
-  // eslint-disable-next-line @typescript-eslint/no-empty-function
-  setTextValue: () => {},
+  setTextValue: () => "",
+  titleValue: "",
+  setTitleValue: () => "",
 };
 export const TextContext = createContext(def);
 export const TextProvider = (props: Text) => {
   const [textValue, setTextValue] = useState("");
-  const value = { textValue, setTextValue };
+  const [titleValue, setTitleValue] = useState("");
+  const value = { textValue, setTextValue, titleValue, setTitleValue };
   return (
     <TextContext.Provider value={value}>{props.children}</TextContext.Provider>
   );
 };
 export const TextEditor = () => {
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
-  const { textValue, setTextValue } = useContext(TextContext);
+  const { textValue, setTextValue, titleValue, setTitleValue } =
+    useContext(TextContext);
   const { currentUser } = useContext(UserContext);
 
   const handleCharacter = (xter: string): void => {
@@ -47,14 +56,20 @@ export const TextEditor = () => {
   return (
     <TextEditorWrap>
       <div>
+        <TitleAreaWrap
+          placeholder="insert title here"
+          value={titleValue}
+          onChange={(e) => {
+            setTitleValue(e.target.value);
+            editField(currentUser, "currentTitle", titleValue);
+          }}
+        />
         <TextAreaWrap
           placeholder="your text here"
           id="text"
-          // value={textValue}
           value={textValue}
           onChange={(e) => {
             setTextValue(e.target.value);
-            console.log(`editing for ${currentUser}`);
             editField(currentUser, "currentPost", textValue);
           }}
           ref={textAreaRef}

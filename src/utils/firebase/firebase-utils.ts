@@ -49,13 +49,15 @@ export const createUserDocFromAuth = async (userAuth:User) => {
       const createdAt = new Date();
       const notes:string[] = [];
       const currentPost=''
+      const currentTitle=''
       try {
         await setDoc(userDocRef, {
           displayName,
           email,
           createdAt,
           notes,
-          currentPost
+          currentPost,
+          currentTitle
         });
       } catch (error) {
         if (error instanceof FirebaseError) {
