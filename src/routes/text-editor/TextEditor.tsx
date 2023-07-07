@@ -47,11 +47,6 @@ export const TextEditor = () => {
     setTextValue(newTextValue);
   };
   const date = new Date();
-  const defData = {
-    title: "the ABCs of code",
-    content: " A if for ability, Bis for brief",
-    date: `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`,
-  };
 
   return (
     <TextEditorWrap>
@@ -80,7 +75,17 @@ export const TextEditor = () => {
           <button onClick={() => handleCharacter("[]")}>bold</button>
           <button onClick={() => handleCharacter("{}")}>paragraph</button>
           <Link to={"/dashboard/prev"}>preview</Link>
-          <button onClick={() => addPost(defData)}>publish</button>
+          <button
+            onClick={() =>
+              addPost({
+                title: titleValue,
+                content: textValue,
+                date: `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`,
+              })
+            }
+          >
+            publish
+          </button>
         </div>
       </div>
     </TextEditorWrap>

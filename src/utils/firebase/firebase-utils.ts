@@ -13,7 +13,7 @@ import {
   User
 } from 'firebase/auth'
 import {
-  getFirestore,doc,getDoc,setDoc, updateDoc, collection, addDoc ,} from "firebase/firestore";
+  getFirestore,doc,getDoc,setDoc, updateDoc, collection, addDoc , getDocs, DocumentData} from "firebase/firestore";
 import { PostProps } from "../../components/post-item/post-item";
 
 // Your web app's Firebase configuration
@@ -74,12 +74,16 @@ export const createUserDocFromAuth = async (userAuth:User) => {
   export const signOutUser = async () => {
     await signOut(auth);
   };
-  export const getGlobalPosts=async ()=>{
-    const docReferenceGlobal=doc( db, 'globalPosts', 'general')
-    const allPostsSnapshot= await getDoc(docReferenceGlobal)
-    .then(res=>res.data())
-    .then(res=>res?res['zero']:null)
-    return allPostsSnapshot
+  export const getGlobalPosts=async ():Promise<DocumentData[]>=>{
+    const docsReferenceGlobal=collection( db, 'globalPosts', )
+    const allPostsSnapshot= await getDocs(docsReferenceGlobal)
+    const posts:DocumentData[]=[]
+    allPostsSnapshot.docs.forEach(doc=>{
+      // console.log(doc.data())
+     posts.push(doc.data())
+    })
+    console.log(posts)
+    return posts
   }
   
   export const editField= async (user:string|null, field:string, newValue:string)=>{
@@ -91,8 +95,8 @@ export const createUserDocFromAuth = async (userAuth:User) => {
   }
   }
   export const addPost= async (data:PostProps)=>{
-    // const docRef= doc(db, 'globalPosts')
-    const col=  collection(db,'users')
+    const col=  collection(db,'globalPosts')
+  
     await addDoc(col,data)
     
   }
