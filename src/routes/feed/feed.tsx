@@ -3,9 +3,9 @@ import { FeedWrap } from "./feed-styles";
 import pfp from "../../assets/postPFP.svg";
 import img from "../../assets/postIMG.svg";
 import { useEffect, useState } from "react";
-import { getGlobalPosts } from "../../utils/firebase/firebase-utils";
-import { DocumentData } from "firebase/firestore";
-
+import { db, getGlobalPosts } from "../../utils/firebase/firebase-utils";
+import { collection, DocumentData } from "firebase/firestore";
+import { Link } from "react-router-dom";
 export const Feed = () => {
   const [feed, setFeed] = useState<DocumentData[]>([
     {
@@ -17,10 +17,7 @@ export const Feed = () => {
       articleSRC: "",
     },
   ]);
-  // const getFeed=()=>{
-  //   console.log('fetchin feed...')
-  //   getGlobalPosts()
-  // }
+  console.log(feed);
   useEffect(() => {
     const fetchGlobalPosts = async () => {
       const myFeed = await getGlobalPosts();
@@ -28,6 +25,7 @@ export const Feed = () => {
     };
     fetchGlobalPosts();
   }, []);
+  console.log(collection(db, "globalPosts"));
   const date = new Date();
   return (
     <>
@@ -42,11 +40,13 @@ export const Feed = () => {
           name="rajon irem"
         />
         {feed.map((post) => (
-          <PostItem
-            title={post.title}
-            content={post.content.slice(0, 50) + "..."}
-            date={post.date}
-          ></PostItem>
+          <Link to={"post" + "/" + post.id}>
+            <PostItem
+              title={post.title}
+              content={post.content.slice(0, 50) + "..."}
+              date={post.date}
+            ></PostItem>
+          </Link>
         ))}
       </FeedWrap>
     </>

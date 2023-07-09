@@ -36,7 +36,7 @@ googleProvider.setCustomParameters({
 export const auth = getAuth();
 export const signInWithGooglePopup = () =>
   signInWithPopup(auth, googleProvider);
-const db =getFirestore()
+export const db =getFirestore()
 
 export const createUserDocFromAuth = async (userAuth:User) => {
     if (!userAuth) return;
@@ -79,8 +79,8 @@ export const createUserDocFromAuth = async (userAuth:User) => {
     const allPostsSnapshot= await getDocs(docsReferenceGlobal)
     const posts:DocumentData[]=[]
     allPostsSnapshot.docs.forEach(doc=>{
-      // console.log(doc.data())
-     posts.push(doc.data())
+       console.log(doc.id)
+     posts.push({...doc.data(), id:doc.id})
     })
     console.log(posts)
     return posts
@@ -99,4 +99,11 @@ export const createUserDocFromAuth = async (userAuth:User) => {
   
     await addDoc(col,data)
     
+  }
+  export const getPost=async(postId:string):Promise<DocumentData|undefined>=>{
+    const docRef=doc(db,'globalPosts',postId)
+    const docSnapshot= await getDoc(docRef)
+    .then(res=>res.data())
+    console.log(docSnapshot)
+    return docSnapshot
   }
