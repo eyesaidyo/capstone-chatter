@@ -44,12 +44,10 @@ export const Feed = () => {
         {feed.map((post) => (
           <PostItem
             title={post.title}
-            content={post.content}
+            content={post.content.slice(0, 50) + "..."}
             date={post.date}
           ></PostItem>
         ))}
-
-        <h1>{feed[0].content}</h1>
       </FeedWrap>
     </>
   );

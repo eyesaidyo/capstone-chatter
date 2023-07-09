@@ -6,6 +6,7 @@ export interface PostProps {
   title: string;
   content: string;
   articleSRC?: string;
+  user?: string | null;
 }
 export const PostItem = (props: PostProps) => {
   return (

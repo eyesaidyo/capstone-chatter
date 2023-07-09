@@ -76,13 +76,16 @@ export const TextEditor = () => {
           <button onClick={() => handleCharacter("{}")}>paragraph</button>
           <Link to={"/dashboard/prev"}>preview</Link>
           <button
-            onClick={() =>
+            onClick={() => {
               addPost({
                 title: titleValue,
                 content: textValue,
                 date: `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`,
-              })
-            }
+                user: currentUser,
+              });
+              // setTextValue('')
+              // setTitleValue('')
+            }}
           >
             publish
           </button>
