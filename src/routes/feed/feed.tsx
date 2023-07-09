@@ -1,4 +1,4 @@
-import { PostItem, PostProps } from "../../components/post-item/post-item";
+import { PostItem } from "../../components/post-item/post-item";
 import { FeedWrap } from "./feed-styles";
 import pfp from "../../assets/postPFP.svg";
 import img from "../../assets/postIMG.svg";
