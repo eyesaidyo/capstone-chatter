@@ -1,8 +1,8 @@
 // Import the functions you need from the SDKs you need
 import { FirebaseError, initializeApp } from "firebase/app";
 //  import { getAnalytics } from "firebase/analytics";
- import {getStorage} from 'firebase/storage'
-// TODO: Add SDKs for Firebase products that you want to use
+
+
 // https://firebase.google.com/docs/web/setup#available-libraries
 import {
   signInWithPopup,
@@ -27,8 +27,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-export const storage=getStorage(app)
+export const app = initializeApp(firebaseConfig);
+
 const googleProvider = new GoogleAuthProvider();
 googleProvider.setCustomParameters({
   prompt: "select_account",
@@ -62,7 +62,7 @@ export const createUserDocFromAuth = async (userAuth:User) => {
       } catch (error) {
         if (error instanceof FirebaseError) {
           // Firebase error
-          console.error('Firebase error:', error.message);
+          console.error('Firebase error:', error); 
         } else {
           // Other error types
           console.error('Error:', error);
