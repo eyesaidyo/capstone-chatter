@@ -27,7 +27,7 @@ export const NavBar = () => {
         </div>
         <NavLinksWrap>
           <NavLinkItem to={"/"}>Home</NavLinkItem>
-          <NavLinkItem to="about">About Uss</NavLinkItem>
+          <NavLinkItem to="about">About Us</NavLinkItem>
           <NavLinkItem to="contact">Contact</NavLinkItem>
           <NavLinkItem to="blogs">Blogs</NavLinkItem>
         </NavLinksWrap>

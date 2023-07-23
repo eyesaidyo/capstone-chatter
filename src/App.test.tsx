@@ -10,7 +10,7 @@ describe("renders app correct", () => {
         <App />
       </MemoryRouter>
     );
-    const h1 = screen.queryByText("rasine");
+    const h1 = screen.queryByText("About Us");
     // expectationsq
     expect(h1).toBeInTheDocument();
   });
