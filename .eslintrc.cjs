@@ -1,6 +1,8 @@
-module.exports = {
+export default {
   env: { browser: true, es2020: true },
   extends: [
+    'react-app',
+    'react-app/jest',
     'eslint:recommended',
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
