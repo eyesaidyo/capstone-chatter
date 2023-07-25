@@ -16,8 +16,15 @@ export const PostWrap = styled.div`
     width: 80px;
     border-radius: 50%;
   }
+  .foot {
+    display: flex;
+    justify-content: center;
+  }
 `;
 export const StyledLink = styled(Link)`
   text-decoration: none;
   color: inherit;
+`;
+export const IconWrap = styled.img`
+  width: 20px;
 `;

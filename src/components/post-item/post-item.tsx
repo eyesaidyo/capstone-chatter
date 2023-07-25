@@ -1,4 +1,6 @@
-import { PostWrap } from "./post-item-styles";
+import { IconWrap, PostWrap } from "./post-item-styles";
+import comments from "../../assets/comments.svg";
+import plain_heart from "../../assets/plain-heart.svg";
 export interface PostProps {
   avatarSRC?: string;
   name?: string;
@@ -19,7 +21,14 @@ export const PostItem = (props: PostProps) => {
       <h3>{props.title}</h3>
       <p>{props.content}</p>
       <img className="article-img" src={props.articleSRC} />
-      <div className="foot"></div>
+      <div className="foot">
+        <span>
+          <IconWrap src={comments} /> 0
+        </span>
+        <span>
+          <IconWrap src={plain_heart} /> 0
+        </span>
+      </div>
     </PostWrap>
   );
 };
