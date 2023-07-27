@@ -55,8 +55,8 @@ export const TextEditor = () => {
           placeholder="insert title here"
           value={titleValue}
           onChange={(e) => {
-            setTitleValue(e.target.value);
-            editField(currentUser, "currentTitle", titleValue);
+            if (currentUser) setTitleValue(e.target.value);
+            editField(currentUser?.uid, "currentTitle", titleValue);
           }}
         />
         <TextAreaWrap
@@ -65,7 +65,7 @@ export const TextEditor = () => {
           value={textValue}
           onChange={(e) => {
             setTextValue(e.target.value);
-            editField(currentUser, "currentPost", textValue);
+            editField(currentUser?.uid, "currentPost", textValue);
           }}
           ref={textAreaRef}
         ></TextAreaWrap>
@@ -81,7 +81,9 @@ export const TextEditor = () => {
                 title: titleValue,
                 content: textValue,
                 date: `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`,
-                user: currentUser,
+                user: currentUser?.uid,
+                likes: [],
+                comments: [],
               });
               // setTextValue('')
               // setTitleValue('')

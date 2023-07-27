@@ -14,7 +14,7 @@ export const NavBar = () => {
   const navigate = useNavigate();
   async function handleLogin() {
     const { user } = await signInWithGooglePopup();
-    setCurrentUser(user.uid);
+    setCurrentUser({ uid: user.uid, displayName: user.displayName });
     console.log(`nav--currenUser is ${user.uid}`);
     navigate("/dashboard");
   }

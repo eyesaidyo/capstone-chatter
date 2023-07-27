@@ -1,21 +1,31 @@
-import { createContext, Dispatch, ReactNode, SetStateAction, useState,  } from "react";
-interface UserType{
- currentUser: null|string;
- setCurrentUser: Dispatch<SetStateAction<null|string>>;
-
+import {
+  createContext,
+  Dispatch,
+  ReactNode,
+  SetStateAction,
+  useState,
+} from "react";
+interface CurrentUser {
+  uid: string | null;
+  displayName: string | null;
 }
-const defaultCon:UserType={
-    currentUser: null,
-    setCurrentUser: ()=>null,
-
+interface UserType {
+  currentUser: null | CurrentUser;
+  setCurrentUser: Dispatch<SetStateAction<null | CurrentUser>>;
 }
+const defaultCon: UserType = {
+  currentUser: null,
+  setCurrentUser: () => null,
+};
 export const UserContext = createContext(defaultCon);
-interface UserProps{
-  children:ReactNode
+interface UserProps {
+  children: ReactNode;
 }
-export const UserProvider = (props:UserProps) => {
-  const [currentUser, setCurrentUser] = useState<null|string>(null);
-  const value:UserType = { currentUser, setCurrentUser };
+export const UserProvider = (props: UserProps) => {
+  const [currentUser, setCurrentUser] = useState<null | CurrentUser>(null);
+  const value: UserType = { currentUser, setCurrentUser };
 
-  return <UserContext.Provider value={value}>{props.children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider value={value}>{props.children}</UserContext.Provider>
+  );
 };

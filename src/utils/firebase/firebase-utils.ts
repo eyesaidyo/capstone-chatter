@@ -1,5 +1,5 @@
 // Import the functions you need from the SDKs you need
-import { FirebaseError, initializeApp } from "firebase/app";
+import { FirebaseError, initializeApp ,} from "firebase/app";
 //  import { getAnalytics } from "firebase/analytics";
 
 
@@ -14,7 +14,7 @@ import {
 } from 'firebase/auth'
 import {
   getFirestore,doc,getDoc,setDoc, updateDoc, collection, addDoc , getDocs, DocumentData} from "firebase/firestore";
-import { PostProps } from "../../components/post-item/post-item";
+import { Comments, PostProps } from "../../components/post-item/post-item";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -86,9 +86,17 @@ export const createUserDocFromAuth = async (userAuth:User) => {
     return posts
   }
   
-  export const editField= async (user:string|null, field:string, newValue:string)=>{
+  export const editField= async (user:string|null|undefined, field:string, newValue:string)=>{
     if (user){
     const docRef= doc(db, 'users', user )
+    await updateDoc(docRef, {
+      [field]: newValue
+    })
+  }
+  }
+  export const editPostsField= async (postId:string|null, field:string, newValue:Comments[])=>{
+    if (postId){
+    const docRef= doc(db, 'globalPosts', postId )
     await updateDoc(docRef, {
       [field]: newValue
     })
@@ -100,10 +108,13 @@ export const createUserDocFromAuth = async (userAuth:User) => {
     await addDoc(col,data)
     
   }
-  export const getPost=async(postId:string):Promise<DocumentData|undefined>=>{
+  export const getPost=async(postId:string|undefined):Promise<DocumentData|undefined>=>{
+    if (postId){
     const docRef=doc(db,'globalPosts',postId)
     const docSnapshot= await getDoc(docRef)
     .then(res=>res.data())
+    //.then(res=> res?.comments)
     console.log(docSnapshot)
     return docSnapshot
+    }
   }

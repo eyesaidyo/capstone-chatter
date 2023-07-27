@@ -14,14 +14,14 @@ export const Preview = (props: PreviewProps) => {
   const regHeading = /@(.*?)@/g;
   const regHeading2 = /#(.*?)#/g;
   const words = props.val.split("\n");
-  console.log(words);
+  //console.log(words);
   return (
     <PreviewWrap>
       <h1>{props.title}</h1>
-      {words.map((wrd) => {
+      {words.map((wrd, i) => {
         if (wrd.match(regBold)) {
           return (
-            <p>
+            <p key={i}>
               {wrd.slice(0, wrd.indexOf("<"))}
               <strong>
                 {wrd.slice(wrd.indexOf("<") + 1, wrd.lastIndexOf("<"))}
@@ -32,7 +32,10 @@ export const Preview = (props: PreviewProps) => {
         } else if (wrd.match(regLink)) {
           console.log(wrd.split(" "));
           return (
-            <a href={wrd.slice(wrd.indexOf("%") + 1, wrd.lastIndexOf("%"))}>
+            <a
+              key={i}
+              href={wrd.slice(wrd.indexOf("%") + 1, wrd.lastIndexOf("%"))}
+            >
               {wrd
                 .split(" ")
                 .map((w, i) =>
@@ -45,7 +48,7 @@ export const Preview = (props: PreviewProps) => {
             "ital-" + wrd.slice(wrd.lastIndexOf("~") + 1, wrd.length)
           );
           return (
-            <p>
+            <p key={i}>
               {wrd.slice(0, wrd.indexOf("~"))}
               <em>
                 {wrd.slice(
@@ -58,18 +61,22 @@ export const Preview = (props: PreviewProps) => {
           );
         } else if (wrd.match(regParagraph)) {
           console.log(wrd);
-          return <p>{wrd.slice(1, wrd.length - 1)}</p>;
+          return <p key={i}>{wrd.slice(1, wrd.length - 1)}</p>;
         } else if (wrd.match(regHeading)) {
           console.log(wrd);
           return (
-            <h2>{wrd.slice(wrd.indexOf("@") + 1, wrd.lastIndexOf("@"))}</h2>
+            <h2 key={i}>
+              {wrd.slice(wrd.indexOf("@") + 1, wrd.lastIndexOf("@"))}
+            </h2>
           );
         } else if (wrd.match(regHeading2)) {
           console.log(wrd);
           return (
-            <h3>{wrd.slice(wrd.indexOf("#") + 1, wrd.lastIndexOf("#"))}</h3>
+            <h3 key={i}>
+              {wrd.slice(wrd.indexOf("#") + 1, wrd.lastIndexOf("#"))}
+            </h3>
           );
-        } else return <p>{wrd}</p>;
+        } else return <p key={i}>{wrd}</p>;
       })}
     </PreviewWrap>
   );

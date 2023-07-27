@@ -1,6 +1,10 @@
 import { IconWrap, PostWrap } from "./post-item-styles";
 import comments from "../../assets/comments.svg";
 import plain_heart from "../../assets/plain-heart.svg";
+export interface Comments {
+  userName: string | null | undefined;
+  comment: string;
+}
 export interface PostProps {
   avatarSRC?: string;
   name?: string;
@@ -9,6 +13,8 @@ export interface PostProps {
   content: string;
   articleSRC?: string;
   user?: string | null;
+  likes: string[];
+  comments: Comments[];
 }
 export const PostItem = (props: PostProps) => {
   return (
@@ -23,10 +29,10 @@ export const PostItem = (props: PostProps) => {
       <img className="article-img" src={props.articleSRC} />
       <div className="foot">
         <span>
-          <IconWrap src={comments} /> 0
+          <IconWrap src={comments} /> {props.comments.length}
         </span>
         <span>
-          <IconWrap src={plain_heart} /> 0
+          <IconWrap src={plain_heart} /> {props.likes.length}
         </span>
       </div>
     </PostWrap>
