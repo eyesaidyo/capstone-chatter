@@ -1,4 +1,5 @@
 import { useContext, useState } from "react";
+import { CommentsContext } from "../../contexts/comments-context";
 import { UserContext } from "../../contexts/user-context";
 import { editPostsField } from "../../utils/firebase/firebase-utils";
 import { CommentItem } from "../comment-item/comment-item";
@@ -6,25 +7,28 @@ import { Comments } from "../post-item/post-item";
 import { CommentsFormWrap, CommentsWrap } from "./comment-section-styles";
 interface CommentProps {
   postId: string | undefined;
-  comments: Comments[];
 }
 export const CommentSection = (props: CommentProps) => {
+  const { comments, setComments } = useContext(CommentsContext);
   const { currentUser } = useContext(UserContext);
   const [commentVal, setCommentVal] = useState<Comments>({
     userName: currentUser?.displayName,
     comment: "",
   });
-
+  console.log(`user is ${currentUser?.displayName}`);
   const handleClick = async () => {
     console.log(currentUser);
-    if (props.postId)
-      editPostsField(props.postId, "comments", [...props.comments, commentVal]);
-    // setCommentVal({ userName: "", comment: "" });
+    if (Array.isArray(comments) && props.postId) {
+      await editPostsField(props.postId, "comments", [...comments, commentVal]);
+      setComments([...comments, commentVal]);
+      setCommentVal({ userName: "", comment: "" });
+    }
   };
   return (
     <CommentsWrap>
       <CommentsFormWrap>
         <textarea
+          value={commentVal.comment}
           onChange={(e) => {
             let val = e.target.value;
             setCommentVal({ userName: currentUser?.displayName, comment: val });
@@ -33,9 +37,10 @@ export const CommentSection = (props: CommentProps) => {
         />
         <button onClick={handleClick}>add comment</button>
       </CommentsFormWrap>
-      {props.comments.map((p, idx) => (
-        <CommentItem userName={p.userName} comment={p.comment} key={idx} />
-      ))}
+      {comments &&
+        comments.map((p, idx) => (
+          <CommentItem userName={p.userName} comment={p.comment} key={idx} />
+        ))}
     </CommentsWrap>
   );
 };

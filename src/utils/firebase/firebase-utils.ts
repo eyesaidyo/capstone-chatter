@@ -94,7 +94,15 @@ export const createUserDocFromAuth = async (userAuth:User) => {
     })
   }
   }
-  export const editPostsField= async (postId:string|null, field:string, newValue:Comments[])=>{
+  export const editPostsField= async (postId:string|null|undefined, field:string, newValue:Comments[])=>{
+    if (postId){
+    const docRef= doc(db, 'globalPosts', postId )
+    await updateDoc(docRef, {
+      [field]: newValue
+    })
+  }
+  }
+  export const editLikesField= async (postId:string, field:string, newValue:(string|null|undefined)[])=>{
     if (postId){
     const docRef= doc(db, 'globalPosts', postId )
     await updateDoc(docRef, {
