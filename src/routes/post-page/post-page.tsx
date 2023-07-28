@@ -8,7 +8,7 @@ import { CommentsContext } from "../../contexts/comments-context";
 import { UserContext } from "../../contexts/user-context";
 
 //interface UserParams extends RouteComponentProps<{ postId: string }> {}
-const PostPage = () => {
+export const PostPage = () => {
   const { id } = useParams();
   const [val, setVal] = useState("");
   const [titleVal, setTitleVal] = useState("");
@@ -53,7 +53,7 @@ const PostPage = () => {
   return (
     <>
       <PostPageWrap>
-        <h1>post page {id}</h1>
+        <h1>post page</h1>
         <Preview val={val} title={titleVal} />
         <h3>Comments</h3>
         <hr />
