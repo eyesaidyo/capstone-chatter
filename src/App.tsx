@@ -12,6 +12,7 @@ import { Drafts } from "./routes/drafts/drafts";
 import { DraftsProvider } from "./contexts/drafts-context";
 import PostPage from "./routes/post-page/post-page";
 import { CommentsProvider } from "./contexts/comments-context";
+import { Notifications } from "./routes/notifications/notifications";
 function App() {
   return (
     <UserProvider>
@@ -29,6 +30,7 @@ function App() {
                 <Route path="create" element={<TextEditor />}></Route>
                 <Route path="prev" element={<View />}></Route>
                 <Route path="drafts" element={<Drafts />}></Route>
+                <Route path="notifications" element={<Notifications />}></Route>
                 <Route path="post/:id" element={<PostPage />}></Route>
               </Route>
             </Routes>

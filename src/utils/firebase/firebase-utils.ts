@@ -13,7 +13,7 @@ import {
   User
 } from 'firebase/auth'
 import {
-  getFirestore,doc,getDoc,setDoc, updateDoc, collection, addDoc , getDocs, DocumentData} from "firebase/firestore";
+  getFirestore,doc,getDoc,setDoc, updateDoc, collection, addDoc , getDocs, DocumentData, onSnapshot} from "firebase/firestore";
 import { Comments, PostProps } from "../../components/post-item/post-item";
 
 // Your web app's Firebase configuration
