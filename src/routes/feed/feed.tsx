@@ -1,10 +1,11 @@
 import { PostItem } from "../../components/post-item/post-item";
-import { FeedWrap } from "./feed-styles";
+import { FeedWrap, Top } from "./feed-styles";
 import { useEffect, useState } from "react";
 import { db, getGlobalPosts } from "../../utils/firebase/firebase-utils";
 import { collection, DocumentData } from "firebase/firestore";
 // import { Link } from "react-router-dom";
 import { StyledLink } from "../../components/post-item/post-item-styles";
+import { SearchBar } from "../../components/searchbar/searchbar";
 export const Feed = () => {
   const [feed, setFeed] = useState<DocumentData[]>([
     {
@@ -31,7 +32,9 @@ export const Feed = () => {
   return (
     <>
       <FeedWrap>
-        <h2>feed</h2>
+        <Top>
+          <SearchBar />
+        </Top>
 
         {feed.map((post) => (
           <StyledLink to={"post" + "/" + post.id}>

@@ -2,12 +2,15 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 export const PostWrap = styled.div`
   width: 60%;
-  border: 1px solid;
-  padding: 10px;
+  border: 1px solid #cdcdcd;
+  padding: 25px;
   margin: 50px auto;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border-radius: 8px;
+  background-color: #f7f7f7;
+  color: #444444;
   .top {
     display: flex;
     gap: 50px;

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { Link } from "react-router-dom";
 export const MenuWrap = styled.div`
   color: #543ee0;
   height: 100vh;
@@ -8,10 +8,9 @@ export const MenuWrap = styled.div`
   width: 317px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  justify-content: space-around;
   padding: 20px;
-  border-right: 1px solid #1e1e1e;
-
+  border-right: 1px solid #cdcdcd;
   & h1 {
     margin-bottom: 30px;
   }
@@ -41,4 +40,7 @@ export const ItemWrap = styled.div`
     margin-right: 20px;
     /* align-self: baseline; */
   }
+`;
+export const LinkWrap = styled(Link)`
+  text-decoration: none;
 `;

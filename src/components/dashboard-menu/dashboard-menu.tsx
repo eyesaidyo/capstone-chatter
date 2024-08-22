@@ -1,4 +1,4 @@
-import { ItemWrap, MenuWrap } from "./dashboard-menu-styles";
+import { ItemWrap, LinkWrap, MenuWrap } from "./dashboard-menu-styles";
 import feedIcon from "../../assets/feed-icon.svg";
 import draftsIcon from "../../assets/drafts-icon.svg";
 import analytics from "../../assets/analytics-icon.svg";
@@ -12,35 +12,34 @@ export const DashboardMenu = () => {
   return (
     <>
       <MenuWrap>
-        <Link to="/dashboard">
+        <LinkWrap to="/dashboard">
           <h1>CHATTER</h1>
-        </Link>
-        <Link to="/dashboard">
+        </LinkWrap>
+        <LinkWrap to="/dashboard">
           <ItemWrap>
             <img src={feedIcon} />
             <span>Feed</span>
           </ItemWrap>
-        </Link>
-        <Link to="drafts">
+        </LinkWrap>
+        <LinkWrap to="drafts">
           <ItemWrap>
             <img src={draftsIcon} />
             <span>Drafts</span>
           </ItemWrap>
-        </Link>
-        <Link to="notifications">
+        </LinkWrap>
+        <LinkWrap to="notifications">
           <ItemWrap>
             <img src={notifs} />
             <span>Notifications</span>
           </ItemWrap>
-        </Link>
-        <ItemWrap>
-          <img src={analytics} />
-          <span>Analytics</span>
-        </ItemWrap>
-        <ItemWrap>
-          <img src={profile} />
-          <span>Profile</span>
-        </ItemWrap>
+        </LinkWrap>
+        <LinkWrap to="/profile">
+          <ItemWrap>
+            <img src={profile} />
+            <span>Profile</span>
+          </ItemWrap>
+        </LinkWrap>
+
         <p
           className="logout"
           onClick={() => {
@@ -50,9 +49,9 @@ export const DashboardMenu = () => {
         >
           Log out
         </p>
-        <Link to="create">
+        <LinkWrap to="create">
           <button>Create Post</button>
-        </Link>
+        </LinkWrap>
       </MenuWrap>
     </>
   );
