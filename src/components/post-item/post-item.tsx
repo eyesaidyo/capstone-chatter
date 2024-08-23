@@ -28,10 +28,10 @@ export const PostItem = (props: PostProps) => {
       <p>{props.content}</p>
       <img className="article-img" src={props.articleSRC} />
       <div className="foot">
-        <span>
+        <span className="details">
           <IconWrap src={comments} /> {props.comments.length}
         </span>
-        <span>
+        <span className="details">
           <IconWrap src={plain_heart} /> {props.likes.length}
         </span>
       </div>

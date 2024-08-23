@@ -22,6 +22,12 @@ export const PostWrap = styled.div`
   .foot {
     display: flex;
     justify-content: center;
+    align-items: center;
+    & .details {
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
   }
 `;
 export const StyledLink = styled(Link)`

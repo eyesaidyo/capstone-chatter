@@ -39,15 +39,23 @@ export const TextEditor = () => {
   const { currentUser } = useContext(UserContext);
 
   const handleCharacter = (xter: string): void => {
-    const cursor = textAreaRef.current?.selectionStart;
-    const words = textValue;
-    const newTextValue = words
-      ?.slice(0, cursor)
-      .concat(`${xter} ${words.slice(cursor, words.length)}`);
-    setTextValue(newTextValue);
+    const cursor = textAreaRef.current?.selectionStart ?? 0;
+    const text = textAreaRef.current?.value ?? "";
+    const newTextValue = text?.slice(0, cursor) + xter + text?.slice(cursor);
+    if (textAreaRef.current) {
+      textAreaRef.current.value = newTextValue;
+    }
+    // Insert the character at the current cursor position
+    const newCursorPosition = newTextValue?.indexOf(xter) + 1;
+    if (textAreaRef.current && newCursorPosition) {
+      textAreaRef.current.setSelectionRange(
+        newCursorPosition,
+        newCursorPosition
+      );
+      textAreaRef.current.focus();
+    }
   };
   const date = new Date();
-
   return (
     <TextEditorWrap>
       <div>

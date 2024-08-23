@@ -6,6 +6,7 @@ import { collection, DocumentData } from "firebase/firestore";
 // import { Link } from "react-router-dom";
 import { StyledLink } from "../../components/post-item/post-item-styles";
 import { SearchBar } from "../../components/searchbar/searchbar";
+import stockImg from "../../assets/stockpfp.jpg";
 export const Feed = () => {
   const [feed, setFeed] = useState<DocumentData[]>([
     {
@@ -44,6 +45,7 @@ export const Feed = () => {
               date={post.date}
               comments={post.comments}
               likes={post.likes}
+              avatarSRC={stockImg}
             ></PostItem>
           </StyledLink>
         ))}
