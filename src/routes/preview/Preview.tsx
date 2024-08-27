@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { TextContext } from "../text-editor/TextEditor";
 import { PreviewWrap } from "./preview.styles";
+import { marked } from "marked";
 interface PreviewProps {
   val: string;
   title: string;
@@ -18,7 +19,7 @@ export const Preview = (props: PreviewProps) => {
   return (
     <PreviewWrap>
       <h1>{props.title}</h1>
-      {words.map((wrd, i) => {
+      {/* {words.map((wrd, i) => {
         if (wrd.match(regBold)) {
           return (
             <p key={i}>
@@ -77,7 +78,8 @@ export const Preview = (props: PreviewProps) => {
             </h3>
           );
         } else return <p key={i}>{wrd}</p>;
-      })}
+      })} */}
+      <div dangerouslySetInnerHTML={{ __html: marked.parse(props.val) }}></div>
     </PreviewWrap>
   );
 };

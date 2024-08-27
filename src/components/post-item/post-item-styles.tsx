@@ -37,3 +37,6 @@ export const StyledLink = styled(Link)`
 export const IconWrap = styled.img`
   width: 20px;
 `;
+export const IconWrap2 = styled.img`
+  width: 15px;
+`;

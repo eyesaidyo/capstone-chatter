@@ -1,4 +1,4 @@
-import { IconWrap, PostWrap } from "./post-item-styles";
+import { IconWrap, IconWrap2, PostWrap } from "./post-item-styles";
 import comments from "../../assets/comments.svg";
 import plain_heart from "../../assets/plain-heart.svg";
 export interface Comments {
@@ -32,7 +32,7 @@ export const PostItem = (props: PostProps) => {
           <IconWrap src={comments} /> {props.comments.length}
         </span>
         <span className="details">
-          <IconWrap src={plain_heart} /> {props.likes.length}
+          <IconWrap2 src={plain_heart} /> {props.likes.length}
         </span>
       </div>
     </PostWrap>

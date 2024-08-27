@@ -63,8 +63,10 @@ export const TextEditor = () => {
           placeholder="insert title here"
           value={titleValue}
           onChange={(e) => {
-            if (currentUser) setTitleValue(e.target.value);
-            editField(currentUser?.uid, "currentTitle", titleValue);
+            setTitleValue(e.target.value);
+            if (currentUser) {
+              editField(currentUser?.uid, "currentTitle", titleValue);
+            }
           }}
         />
         <TextAreaWrap
