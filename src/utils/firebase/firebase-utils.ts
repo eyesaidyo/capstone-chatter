@@ -42,12 +42,12 @@ googleProvider.setCustomParameters({
   prompt: "select_account",
 });
 export const auth = getAuth();
-export const signInWithGooglePopup = () => {
+export const signInWithGooglePopup = async () => {
   const stats: {
     user: any;
     token: string | undefined;
   } = { user: {}, token: "" };
-  signInWithPopup(auth, googleProvider)
+  return signInWithPopup(auth, googleProvider)
     .then((result) => {
       // This gives you a Google Access Token. You can use it to access the Google API.
       const credential = GoogleAuthProvider.credentialFromResult(result);
@@ -57,6 +57,7 @@ export const signInWithGooglePopup = () => {
       // IdP data available using getAdditionalUserInfo(result)
       stats.token = token;
       stats.user = user;
+      return stats;
     })
     .catch((error) => {
       // Handle Errors here.
@@ -69,10 +70,6 @@ export const signInWithGooglePopup = () => {
       // ...
       console.log(errorCode + " " + errorMessage);
     });
-  return {
-    user: stats.user,
-    token: stats.token,
-  };
 };
 export const db = getFirestore();
 

@@ -7,6 +7,7 @@ import { collection, DocumentData } from "firebase/firestore";
 import { StyledLink } from "../../components/post-item/post-item-styles";
 import { SearchBar } from "../../components/searchbar/searchbar";
 import stockImg from "../../assets/stockpfp.jpg";
+import { marked } from "marked";
 export const Feed = () => {
   const [feed, setFeed] = useState<DocumentData[]>([
     {
@@ -41,7 +42,9 @@ export const Feed = () => {
           <StyledLink to={"post" + "/" + post.id}>
             <PostItem
               title={post.title}
-              content={post.content.slice(0, 50) + "..."}
+              content={
+                marked.parse(post.content).toString().slice(0, 50) + "..."
+              }
               date={post.date}
               comments={post.comments}
               likes={post.likes}

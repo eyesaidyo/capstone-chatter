@@ -10,14 +10,26 @@ import { signInWithGooglePopup } from "../../utils/firebase/firebase-utils";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user-context";
 export const NavBar = () => {
-  const { setCurrentUser } = useContext(UserContext);
+  const { setCurrentUser, currentUser } = useContext(UserContext);
   const navigate = useNavigate();
+
   async function handleLogin() {
-    const { user } = await signInWithGooglePopup();
-    setCurrentUser({ uid: user.uid, displayName: user.displayName });
-    console.log(`nav--currenUser is ${user.uid}`);
-    navigate("/dashboard");
+    try {
+      const { user } = (await signInWithGooglePopup()) as {
+        user: any;
+        token: string | undefined;
+      };
+      setCurrentUser({ uid: user.uid, displayName: user.displayName });
+      console.log(`nav--currenUser is ${user.uid}`);
+      if (user.uid) {
+        navigate("/dashboard");
+      }
+    } catch (error) {
+      console.error("Login failed", error);
+    }
+    // currentUser?.uid && navigate("/dashboard");
   }
+
   return (
     <>
       <NavWrap>

@@ -87,6 +87,14 @@ export const TextEditor = () => {
           <Link to={"/dashboard/prev"}>preview</Link>
           <button
             onClick={() => {
+              console.log({
+                title: titleValue,
+                content: textValue,
+                date: `${date.getDate()}-${date.getMonth()}-${date.getFullYear()}`,
+                user: currentUser && currentUser?.uid,
+                likes: [],
+                comments: [],
+              });
               addPost({
                 title: titleValue,
                 content: textValue,

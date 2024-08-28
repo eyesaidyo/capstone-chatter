@@ -1,6 +1,7 @@
 import { IconWrap, IconWrap2, PostWrap } from "./post-item-styles";
 import comments from "../../assets/comments.svg";
 import plain_heart from "../../assets/plain-heart.svg";
+import { marked } from "marked";
 export interface Comments {
   userName: string | null | undefined;
   comment: string;
@@ -25,7 +26,7 @@ export const PostItem = (props: PostProps) => {
         <p>{props.date}</p>
       </div>
       <h3>{props.title}</h3>
-      <p>{props.content}</p>
+      {/* <p dangerouslySetInnerHTML={{ __html: marked.parse(props.content) }}></p> */}
       <img className="article-img" src={props.articleSRC} />
       <div className="foot">
         <span className="details">
