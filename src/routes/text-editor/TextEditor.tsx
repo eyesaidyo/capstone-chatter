@@ -60,7 +60,7 @@ export const TextEditor = () => {
     <TextEditorWrap>
       <div>
         <TitleAreaWrap
-          placeholder="insert title here"
+          placeholder="Insert post title here"
           value={titleValue}
           onChange={(e) => {
             setTitleValue(e.target.value);
