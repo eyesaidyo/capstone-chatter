@@ -6,6 +6,7 @@ import { Preview } from "../preview/Preview";
 import { CommentSection } from "../../components/comment-section/comment-section";
 import { CommentsContext } from "../../contexts/comments-context";
 import { UserContext } from "../../contexts/user-context";
+import { marked } from "marked";
 
 //interface UserParams extends RouteComponentProps<{ postId: string }> {}
 export const PostPage = () => {
@@ -53,8 +54,8 @@ export const PostPage = () => {
   return (
     <>
       <PostPageWrap>
-        <h1>post page</h1>
-        <Preview val={val} title={titleVal} />
+        <h1>{titleVal}</h1>
+        <div dangerouslySetInnerHTML={{ __html: marked.parse(val) }}></div>
         <h3>Comments</h3>
         <hr />
         {isLiked ? (
