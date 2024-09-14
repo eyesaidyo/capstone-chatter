@@ -1,7 +1,7 @@
 import { IconWrap, IconWrap2, PostWrap } from "./post-item-styles";
 import comments from "../../assets/comments.svg";
 import plain_heart from "../../assets/plain-heart.svg";
-import { marked } from "marked";
+// import { marked } from "marked";
 export interface Comments {
   userName: string | null | undefined;
   comment: string;

@@ -2,7 +2,7 @@ import { PostPageWrap } from "./post-page-styles";
 import { useParams } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import { editLikesField, getPost } from "../../utils/firebase/firebase-utils";
-import { Preview } from "../preview/Preview";
+// import { Preview } from "../preview/Preview";
 import { CommentSection } from "../../components/comment-section/comment-section";
 import { CommentsContext } from "../../contexts/comments-context";
 import { UserContext } from "../../contexts/user-context";
