@@ -33,7 +33,7 @@ export const CommentSection = (props: CommentProps) => {
             let val = e.target.value;
             setCommentVal({ userName: currentUser?.displayName, comment: val });
           }}
-          // value={commentVal.comment}
+          placeholder="Your comment here..."
         />
         <button onClick={handleClick}>add comment</button>
       </CommentsFormWrap>
