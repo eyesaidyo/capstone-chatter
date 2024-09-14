@@ -12,7 +12,10 @@ export const SignUpPage = () => {
   const { currentUser, setCurrentUser } = useContext(UserContext);
 
   const signUp = async (): Promise<void> => {
-    const { user } = await signInWithGooglePopup();
+    const { user } = (await signInWithGooglePopup()) as {
+      user: any;
+      token: string | undefined;
+    };
 
     createUserDocFromAuth(user);
     setCurrentUser({ uid: user.uid, displayName: user.displayName });

@@ -10,7 +10,7 @@ import { signInWithGooglePopup } from "../../utils/firebase/firebase-utils";
 import { useContext } from "react";
 import { UserContext } from "../../contexts/user-context";
 export const NavBar = () => {
-  const { setCurrentUser, currentUser } = useContext(UserContext);
+  const { setCurrentUser } = useContext(UserContext);
   const navigate = useNavigate();
 
   async function handleLogin() {

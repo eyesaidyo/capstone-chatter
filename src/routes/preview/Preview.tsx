@@ -8,13 +8,13 @@ interface PreviewProps {
 }
 export const Preview = (props: PreviewProps) => {
   //const { textValue, titleValue } = useContext(TextContext);
-  const regBold = new RegExp(/<(.*?)</g);
-  const regLink = /%(.*?)%/g;
-  const regItalic = /~(.*?)~/g;
-  const regParagraph = /{(.*?)}/g;
-  const regHeading = /@(.*?)@/g;
-  const regHeading2 = /#(.*?)#/g;
-  const words = props.val.split("\n");
+  // const regBold = new RegExp(/<(.*?)</g);
+  // const regLink = /%(.*?)%/g;
+  // const regItalic = /~(.*?)~/g;
+  // const regParagraph = /{(.*?)}/g;
+  // const regHeading = /@(.*?)@/g;
+  // const regHeading2 = /#(.*?)#/g;
+  // const words = props.val.split("\n");
   //console.log(words);
   return (
     <PreviewWrap>
