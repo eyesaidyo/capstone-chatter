@@ -1,17 +1,17 @@
 {
   "compilerOptions": {
-    "target": "ES6",
+    "target": "ES2020",
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
-    "module": "nodenext",
+    "module": "ESNext",
     "skipLibCheck": true,
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
     "paths": {
       "@/*": ["src/*"]
     },
-
+    
     /* Bundler mode */
-    "moduleResolution": "nodenext",
+    "moduleResolution": "Bundler",
     
     "resolveJsonModule": true,
     "isolatedModules": true,
