@@ -7,8 +7,4 @@ export default defineConfig({
   test: {
     environment: "jsdom",
   },
-  paths: {
-    vite: "./node_modules/vite",
-    "@vitejs/plugin-react": "./node_modules/@vitejs/plugin-react",
-  },
 });
