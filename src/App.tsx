@@ -13,6 +13,7 @@ import { DraftsProvider } from "./contexts/drafts-context";
 import PostPage from "./routes/post-page/post-page";
 import { CommentsProvider } from "./contexts/comments-context";
 import { Notifications } from "./routes/notifications/notifications";
+import { ModalProvider } from "./contexts/modal-context";
 function App() {
   return (
     <UserProvider>
@@ -20,20 +21,25 @@ function App() {
       <DraftsProvider>
         <TextProvider>
           <CommentsProvider>
-            <Routes>
-              <Route path="/" element={<NavBar />}>
-                <Route index element={<LandingPage />}></Route>
-                <Route path="/sign-up" element={<SignUpPage />}></Route>
-              </Route>
-              <Route path="/dashboard" element={<Dashboard />}>
-                <Route index element={<Feed />}></Route>
-                <Route path="create" element={<TextEditor />}></Route>
-                <Route path="prev" element={<View />}></Route>
-                <Route path="drafts" element={<Drafts />}></Route>
-                <Route path="notifications" element={<Notifications />}></Route>
-                <Route path="post/:id" element={<PostPage />}></Route>
-              </Route>
-            </Routes>
+            <ModalProvider>
+              <Routes>
+                <Route path="/" element={<NavBar />}>
+                  <Route index element={<LandingPage />}></Route>
+                  <Route path="/sign-up" element={<SignUpPage />}></Route>
+                </Route>
+                <Route path="/dashboard" element={<Dashboard />}>
+                  <Route index element={<Feed />}></Route>
+                  <Route path="create" element={<TextEditor />}></Route>
+                  <Route path="prev" element={<View />}></Route>
+                  <Route path="drafts" element={<Drafts />}></Route>
+                  <Route
+                    path="notifications"
+                    element={<Notifications />}
+                  ></Route>
+                  <Route path="post/:id" element={<PostPage />}></Route>
+                </Route>
+              </Routes>
+            </ModalProvider>
           </CommentsProvider>
         </TextProvider>
       </DraftsProvider>
