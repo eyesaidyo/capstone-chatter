@@ -15,15 +15,11 @@ import stock1 from "../../assets/stock1.svg";
 import stock2 from "../../assets/stock2.svg";
 import stock3 from "../../assets/stock3.svg";
 import close from "../../assets/close icon.svg";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { ModalContext } from "../../contexts/modal-context";
-import {
-  NavButtonItem,
-  NavButtonsWrap,
-  NavLinkItem,
-} from "../../components/navbar/navbar-styles";
+import { NavLinkItem } from "../../components/navbar/navbar-styles";
 import { UserContext } from "../../contexts/user-context";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { signInWithGooglePopup } from "../../utils/firebase/firebase-utils";
 // import bcg from '../../assets/bacg.svg'
 
@@ -81,7 +77,11 @@ export const LandingPage = () => {
               <h3>blogs</h3>
             </NavLinkItem>
             <div className="buttons">
-              <button id="login" className="logIn">
+              <button
+                id="login"
+                className="logIn"
+                onClick={() => handleLogin()}
+              >
                 Log in
               </button>
               <button id="sign-up" className="signUp">

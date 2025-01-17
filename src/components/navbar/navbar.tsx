@@ -13,7 +13,7 @@ import img from "../../assets/hamburger.png";
 import { ModalContext } from "../../contexts/modal-context";
 export const NavBar = () => {
   const { setCurrentUser } = useContext(UserContext);
-  const { modal, setModal, setIsModalClosed } = useContext(ModalContext);
+  const { setModal, setIsModalClosed } = useContext(ModalContext);
   const navigate = useNavigate();
 
   async function handleLogin() {
